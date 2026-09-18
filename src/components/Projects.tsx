@@ -1,0 +1,261 @@
+"use client";
+
+import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import { Eyebrow, FadeUp, TextReveal } from "./primitives";
+import { projects, type Project } from "@/lib/content";
+
+const ACCENT: Record<Project["accent"], string> = {
+  orange: "#cf7822",
+  mint: "#45a868",
+  cobalt: "#7482fe",
+  purple: "#8e77ff",
+  amber: "#b48a05",
+  pink: "#e5578c",
+};
+
+function Chip({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="mono-label rounded-pill border border-ink/14 px-2.5 py-1 text-ink/55">
+      {children}
+    </span>
+  );
+}
+
+function ArrowIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-hidden="true"
+    >
+      <path d="M4 12 12 4M6 4h6v6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function FeaturedCard({ p, index }: { p: Project; index: number }) {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const mediaY = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
+
+  const accent = ACCENT[p.accent];
+
+  return (
+    <motion.article
+      ref={ref}
+      className="group relative overflow-hidden rounded-2xl border border-ink/12 bg-stone-50"
+      initial={{ opacity: 0, y: 46 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-8% 0px -8% 0px" }}
+      transition={{ duration: 0.9, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <span
+        className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+        style={{ background: accent }}
+      />
+
+      <div className="grid gap-0 lg:grid-cols-[1.05fr_1fr]">
+        {/* Copy */}
+        <div className="p-7 md:p-10">
+          <div className="flex items-center gap-2.5">
+            <span
+              className="h-1.5 w-1.5 rounded-full"
+              style={{ background: accent }}
+            />
+            <span className="mono-label text-ink/45">{p.eyebrow}</span>
+          </div>
+
+          <h3 className="display display-md mt-5 text-ink">{p.title}</h3>
+          <p className="lede mt-4 max-w-[46ch] text-ink/60">{p.summary}</p>
+
+          <ul className="mt-7 space-y-3">
+            {p.outcomes.map((o) => (
+              <li key={o} className="flex gap-3 text-[14.5px] leading-relaxed text-ink/70">
+                <svg
+                  viewBox="0 0 16 16"
+                  className="mt-[5px] h-3 w-3 shrink-0"
+                  fill="none"
+                  stroke={accent}
+                  strokeWidth="1.75"
+                  aria-hidden="true"
+                >
+                  <path d="m3 8.5 3.2 3.2L13 5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {o}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-7 flex flex-wrap gap-1.5">
+            {p.stack.map((s) => (
+              <Chip key={s}>{s}</Chip>
+            ))}
+          </div>
+
+          {p.href && (
+            <a
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mono-label mt-8 inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-3 text-stone-50 transition-colors duration-300 hover:bg-stone-900"
+            >
+              {p.hrefLabel ?? "Open"}
+              <ArrowIcon className="h-3 w-3 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          )}
+        </div>
+
+        {/* Schematic panel — a layered stand-in for a screenshot */}
+        <div className="relative min-h-[260px] overflow-hidden border-t border-ink/10 bg-stone-1100 lg:border-l lg:border-t-0">
+          <div className="dot-grid absolute inset-0 opacity-45" />
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center p-8"
+            style={reduce ? undefined : { y: mediaY }}
+          >
+            <Schematic project={p} accent={accent} />
+          </motion.div>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+/** Wireframe panel built from the project's own stack labels. */
+function Schematic({ project, accent }: { project: Project; accent: string }) {
+  const rows = project.stack.slice(0, 5);
+  return (
+    <div className="w-full max-w-[320px]">
+      <div className="mb-4 flex items-center gap-1.5">
+        {["#f05356", "#e9b40b", "#6fd790"].map((c) => (
+          <span
+            key={c}
+            className="h-2 w-2 rounded-full"
+            style={{ background: c, opacity: 0.55 }}
+          />
+        ))}
+        <span className="mono-label ml-2 text-stone-650">{project.id}</span>
+      </div>
+
+      <div className="space-y-2">
+        {rows.map((r, i) => (
+          <motion.div
+            key={r}
+            className="flex items-center gap-3 rounded-lg border border-stone-100/10 bg-stone-100/3 px-3 py-2.5"
+            initial={{ opacity: 0, x: -14 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.65,
+              delay: 0.15 + i * 0.09,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            <span
+              className="h-1.5 w-1.5 shrink-0 rounded-full"
+              style={{ background: i === 0 ? accent : "#625d58" }}
+            />
+            <span className="mono-label truncate text-stone-500">{r}</span>
+            <span className="ml-auto h-px flex-1 max-w-[52px] bg-stone-100/12" />
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function GridCard({ p, index }: { p: Project; index: number }) {
+  const accent = ACCENT[p.accent];
+  return (
+    <motion.article
+      className="group relative flex flex-col overflow-hidden rounded-xl border border-ink/12 bg-stone-50 p-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-ink/25 hover:shadow-[0_18px_48px_-18px_rgba(39,37,30,0.22)] md:p-7"
+      initial={{ opacity: 0, y: 36 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-6% 0px -6% 0px" }}
+      transition={{ duration: 0.8, delay: (index % 3) * 0.09, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <span
+        className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+        style={{ background: accent }}
+      />
+
+      <div className="flex items-center gap-2.5">
+        <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} />
+        <span className="mono-label text-ink/45">{p.eyebrow}</span>
+      </div>
+
+      <h3 className="display mt-4 text-[1.55rem] leading-[1.12] text-ink">{p.title}</h3>
+      <p className="mt-3 text-[14.5px] leading-relaxed text-ink/60">{p.summary}</p>
+
+      <ul className="mt-5 space-y-2">
+        {p.outcomes.map((o) => (
+          <li key={o} className="flex gap-2.5 text-[13.5px] leading-relaxed text-ink/70">
+            <span
+              className="mt-[7px] h-1 w-1 shrink-0 rounded-full"
+              style={{ background: accent }}
+            />
+            {o}
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-auto flex flex-wrap gap-1.5 pt-6">
+        {p.stack.map((s) => (
+          <Chip key={s}>{s}</Chip>
+        ))}
+      </div>
+    </motion.article>
+  );
+}
+
+export default function Projects() {
+  const featured = projects.filter((p) => p.featured);
+  const rest = projects.filter((p) => !p.featured);
+
+  return (
+    <section
+      id="projects"
+      className="relative z-10 -mt-8 rounded-t-[28px] bg-cream text-ink shadow-[0_-30px_80px_-30px_rgba(0,0,0,0.75)] md:rounded-t-[40px]"
+    >
+      <div className="shell py-24 md:py-32">
+        <FadeUp>
+          <Eyebrow tone="ink">Projects</Eyebrow>
+        </FadeUp>
+
+        <div className="mt-7 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <TextReveal
+            as="h2"
+            text="Things I have shipped, and what they _changed_."
+            className="display display-lg max-w-[16ch] text-ink"
+            accentClassName="italic text-orange-600"
+          />
+          <FadeUp delay={0.15}>
+            <p className="lede max-w-[38ch] text-ink/55">
+              Production sites, revenue platforms, and automations running for real
+              clients — with the outcome each one produced.
+            </p>
+          </FadeUp>
+        </div>
+
+        <div className="mt-14 space-y-6 md:mt-20">
+          {featured.map((p, i) => (
+            <FeaturedCard key={p.id} p={p} index={i} />
+          ))}
+        </div>
+
+        <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {rest.map((p, i) => (
+            <GridCard key={p.id} p={p} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

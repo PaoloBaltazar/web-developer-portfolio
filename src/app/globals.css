@@ -1,26 +1,195 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Design tokens — palette, type scale and spacing mirrored from
+   the Griffin design system (griffin.com) stone/orange ramps.
+   ============================================================ */
+@theme {
+  --color-stone-50: #fdfcf9;
+  --color-stone-100: #f9f5ef;
+  --color-stone-200: #f1ece5;
+  --color-stone-300: #e6e1d9;
+  --color-stone-400: #d4cfc6;
+  --color-stone-500: #c2bcb2;
+  --color-stone-550: #aba69d;
+  --color-stone-600: #959089;
+  --color-stone-650: #7c7771;
+  --color-stone-700: #625d58;
+  --color-stone-800: #514e4b;
+  --color-stone-900: #363533;
+  --color-stone-1000: #1a1918;
+  --color-stone-1100: #0c0c0b;
+
+  --color-ink: #27251e;
+  --color-umber: #271a00;
+  --color-cream: #f9f5ef;
+
+  --color-orange-100: #fff3eb;
+  --color-orange-200: #ffe8d7;
+  --color-orange-300: #ffd9bd;
+  --color-orange-400: #ffc190;
+  --color-orange-500: #ffa557;
+  --color-orange-550: #ea8d35;
+  --color-orange-600: #cf7822;
+  --color-orange-650: #ae6212;
+  --color-orange-900: #512a03;
+  --color-orange-1000: #2a1200;
+
+  --color-mint-500: #6fd790;
+  --color-mint-600: #45a868;
+  --color-amber-500: #e9b40b;
+  --color-cobalt-500: #aab8fe;
+  --color-purple-500: #b9b2ff;
+  --color-pink-500: #fe99b9;
+
+  --font-sans: var(--font-geist-sans), -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-newsreader), "Apple Garamond", Baskerville, "Times New Roman", Times, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-pill: 9999px;
+
+  --spacing-gutter: 20px;
+  --container-grid: 1304px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canvas: var(--color-stone-1100);
+  --fg: var(--color-stone-100);
+  --nav-h: 64px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: color-mix(in srgb, var(--color-stone-100) 10%, transparent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--canvas);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-orange-500);
+  color: var(--color-stone-1100);
+}
+
+/* ---------- Typography primitives ---------- */
+.display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.display-xl {
+  font-size: clamp(2.75rem, 7.2vw, 5.25rem);
+}
+
+.display-lg {
+  font-size: clamp(2.25rem, 5.2vw, 3.75rem);
+}
+
+.display-md {
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.lede {
+  font-size: clamp(1.0625rem, 1.35vw, 1.1875rem);
+  line-height: 1.55;
+  letter-spacing: -0.006em;
+}
+
+/* ---------- Layout ---------- */
+.shell {
+  width: 100%;
+  max-width: var(--container-grid);
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+
+@media (min-width: 768px) {
+  .shell {
+    padding-inline: 32px;
+  }
+}
+
+/* ---------- Texture layers ---------- */
+.dot-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in srgb, var(--color-stone-100) 13%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
+
+.hairline-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-stone-100) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-stone-100) 6%, transparent) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
+/* ---------- Scroll-driven reveal primitives ---------- */
+/* Word-level mask: must stay inline so headings wrap naturally. */
+.reveal-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+/* Full-line mask for hero headline rows. */
+.reveal-mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+/* ---------- Focus ---------- */
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-orange-500);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
 }
