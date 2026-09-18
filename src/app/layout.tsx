@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s · Gabriel Paolo Baltazar",
   },
   description:
-    "Full-stack web developer and AI automation specialist. I build production websites and web apps end to end, and the automated systems that run behind them.",
+    "Two practices, offered separately. Full-stack web development: production websites and web apps, built end to end. AI automation: systems that run on their own in n8n, GoHighLevel, and Make.",
   keywords: [
     "web developer",
     "full-stack developer",
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     siteName: "Gabriel Paolo Baltazar",
     title: "Gabriel Paolo Baltazar — Web Developer & AI Automation Specialist",
     description:
-      "I build production websites and web apps end to end, and the automated systems that run behind them.",
+      "Full-stack web development and AI automation — two separate practices.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Gabriel Paolo Baltazar — Web Developer & AI Automation Specialist",
     description:
-      "I build production websites and web apps end to end, and the automated systems that run behind them.",
+      "Full-stack web development and AI automation — two separate practices.",
   },
   robots: { index: true, follow: true },
 };

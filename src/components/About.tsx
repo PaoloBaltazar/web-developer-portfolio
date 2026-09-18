@@ -10,6 +10,8 @@ import {
 } from "motion/react";
 import { useRef, useState } from "react";
 import IsoStack from "./IsoStack";
+import Portrait from "./Portrait";
+import Practices from "./Practices";
 import { Eyebrow, FadeUp, Stagger, TextReveal, staggerChild } from "./primitives";
 import { chapters, stats } from "@/lib/content";
 
@@ -41,24 +43,36 @@ export default function About() {
 
   return (
     <section id="about" className="relative">
-      {/* ---- Intro ---- */}
+      {/* ---- Intro: copy + portrait ---- */}
       <div className="shell relative py-28 md:py-40">
         <div className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-35" />
-        <FadeUp>
-          <Eyebrow>About</Eyebrow>
-        </FadeUp>
-        <TextReveal
-          as="h2"
-          text="I build the interface, the API, and the _automation_ underneath it."
-          className="display display-lg mt-7 max-w-[19ch] text-stone-100"
-        />
-        <FadeUp delay={0.15}>
-          <p className="lede mt-7 max-w-[56ch] text-stone-600">
-            Computer Science graduate, production web developer, and automation
-            builder. The same person writes the markup, the serverless function,
-            the database schema, and the n8n workflow that ties them together.
-          </p>
-        </FadeUp>
+
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-20">
+          <div>
+            <FadeUp>
+              <Eyebrow>About</Eyebrow>
+            </FadeUp>
+            <TextReveal
+              as="h2"
+              text="One engineer, two _separate_ practices."
+              className="display display-lg mt-7 max-w-[15ch] text-stone-100"
+            />
+            <FadeUp delay={0.15}>
+              <p className="lede mt-7 max-w-[54ch] text-stone-600">
+                Computer Science graduate from Holy Angel University. I take on
+                full-stack web development work and AI automation work as two
+                distinct offers — different toolchains, different deliverables,
+                each hired on its own terms.
+              </p>
+            </FadeUp>
+          </div>
+
+          <Portrait />
+        </div>
+
+        <div className="mt-20 md:mt-24">
+          <Practices />
+        </div>
       </div>
 
       {/* ---- Pinned layered scroll ---- */}

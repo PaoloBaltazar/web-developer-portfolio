@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { useRef } from "react";
+import ContactForm from "./ContactForm";
 import GlyphField from "./GlyphField";
 import { ButtonLink, Eyebrow, FadeUp, TextReveal } from "./primitives";
 import { profile } from "@/lib/content";
@@ -50,7 +51,7 @@ export default function Contact() {
         style={reduce ? undefined : { opacity: glow }}
       />
 
-      <div className="shell relative py-28 md:py-40">
+      <div className="shell relative pt-28 md:pt-40">
         <FadeUp>
           <Eyebrow>Contact</Eyebrow>
         </FadeUp>
@@ -63,19 +64,22 @@ export default function Contact() {
 
         <FadeUp delay={0.15}>
           <p className="lede mt-7 max-w-[52ch] text-stone-600">
-            Open to full-stack web development and AI automation work — contract,
-            freelance, or full-time. Tell me what you are building and I will tell
-            you exactly how I would ship it.
+            I take on full-stack web development and AI automation as separate
+            engagements — contract, freelance, or full-time. Tell me which one you
+            need and I will tell you exactly how I would build it.
           </p>
         </FadeUp>
 
+      </div>
+      <div className="shell relative grid gap-12 pb-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-16">
+        <div>
         {/* Oversized email link */}
         <FadeUp delay={0.2}>
           <a
             href={`mailto:${profile.email}`}
-            className="group mt-12 inline-flex max-w-full items-center gap-4 border-b border-stone-100/15 pb-3 transition-colors duration-500 hover:border-orange-500/70"
+            className="group inline-flex max-w-full items-center gap-4 border-b border-stone-100/15 pb-3 transition-colors duration-500 hover:border-orange-500/70"
           >
-            <span className="display truncate text-[clamp(1.35rem,3.4vw,2.6rem)] text-stone-100 transition-colors duration-500 group-hover:text-orange-500">
+            <span className="display truncate text-[clamp(1.25rem,2.6vw,1.9rem)] text-stone-100 transition-colors duration-500 group-hover:text-orange-500">
               {profile.email}
             </span>
             <svg
@@ -93,7 +97,7 @@ export default function Contact() {
 
         {/* Résumé downloads */}
         <FadeUp delay={0.25}>
-          <div className="mt-12 flex flex-wrap items-center gap-3">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
             <ButtonLink
               href={profile.resumes.webDev}
               download
@@ -146,7 +150,7 @@ export default function Contact() {
         </FadeUp>
 
         {/* Detail grid */}
-        <div className="mt-20 grid gap-px overflow-hidden rounded-xl border border-stone-100/10 bg-stone-100/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-stone-100/10 bg-stone-100/10 sm:grid-cols-2">
           {DETAILS.map((d, i) => (
             <motion.div
               key={d.label}
@@ -175,7 +179,7 @@ export default function Contact() {
 
         {/* Elsewhere */}
         <FadeUp delay={0.1}>
-          <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
             <span className="mono-label text-stone-700">Elsewhere</span>
             {ELSEWHERE.map((l) => (
               <a
@@ -199,6 +203,12 @@ export default function Contact() {
               </a>
             ))}
           </div>
+        </FadeUp>
+        </div>
+
+        {/* Form column */}
+        <FadeUp delay={0.15} className="lg:pt-1">
+          <ContactForm />
         </FadeUp>
       </div>
     </section>

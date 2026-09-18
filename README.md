@@ -27,14 +27,23 @@ npm run lint
 
 | Export | Drives |
 |---|---|
-| `profile` | Name, email, phone, location, social links, résumé paths |
+| `profile` | Name, email, phone, location, photo, social links, résumé paths |
+| `disciplines` | The two practice cards in About |
 | `heroTicker` | Rotating mono strapline in the hero |
 | `techMarquee` | Scrolling tech strip under the hero |
 | `chapters` | The four pinned About chapters + their isometric layer labels |
 | `stats` | The four-up stat row |
-| `projects` | Project cards (`featured: true` renders the large split card) |
-| `experience` | Experience timeline |
-| `capabilities` | The three skill columns |
+| `projects` | Project cards — `discipline` drives the filter, `featured: true` renders the large split card |
+| `projectFilters` | The All / Web development / AI automation tabs |
+| `experience` | Experience timeline (each entry tagged with its practice) |
+| `capabilityPractices` | Capability cards, grouped under each practice |
+
+### The two practices are deliberately separate
+
+Copy throughout the site presents **Web Development** and **AI Automation** as two
+independent offers. Neither is described as supporting the other — no "automations
+that keep your site running" framing. If you edit copy, keep that separation:
+they are two things this person is hired for, not one service with an add-on.
 
 ### ⚠️ Before you publish
 
@@ -42,13 +51,44 @@ npm run lint
 replace them with your real profile URLs in `src/lib/content.ts`.
 Also update `SITE` in `src/app/layout.tsx` to your real domain once you have one.
 
+### Photo
+
+`public/gabriel-paolo-baltazar.jpg` (864×1210). Referenced via `profile.photo` and
+rendered by `Portrait.tsx`, which crops it 4:5 and applies a warm grade so it sits
+inside the palette. To swap it, drop a new portrait-orientation image in `public/`
+and update `profile.photo`.
+
+### Contact form
+
+The form posts to a Server Action (`src/app/actions.ts`) that validates input,
+drops bot submissions via a honeypot field, and sends through **Resend**.
+
+**It will not deliver mail until you set an API key.** Copy `.env.example` to
+`.env.local` and fill it in:
+
+```bash
+cp .env.example .env.local
+```
+
+| Variable | Notes |
+|---|---|
+| `RESEND_API_KEY` | From [resend.com](https://resend.com). Without it the form tells visitors to email directly. |
+| `CONTACT_TO_EMAIL` | Where enquiries land. Defaults to `profile.email`. |
+| `CONTACT_FROM_EMAIL` | Must be on a domain verified in Resend. `onboarding@resend.dev` works for testing. |
+
+On Vercel, add the same three under **Project → Settings → Environment Variables**.
+
+Note that `ContactState` and `initialContactState` live in `src/lib/contact.ts`,
+not in the action file — a `"use server"` module may only export async functions.
+
 ### Résumés
 
 Both PDFs sit in `public/` and are wired to download buttons:
 
-- `Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf` — the primary download
-  (nav button, hero button, Contact section)
-- `Gabriel-Paolo-Baltazar-AI-Automation-Resume.pdf` — secondary, in Contact
+- `Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf` — nav, hero, the Web
+  Development practice card, and Contact
+- `Gabriel-Paolo-Baltazar-AI-Automation-Resume.pdf` — the AI Automation practice
+  card and Contact
 
 To swap one, overwrite the file in `public/` keeping the same filename.
 
@@ -71,8 +111,11 @@ global parallax:
   section exits
 - `About` — a 420vh pin; scroll progress advances the chapter, swaps the isometric
   layer stack, and drives the vertical rail
+- `Portrait` — the photo and its offset hairline frame drift in opposite
+  directions, separating into two planes
 - `Projects` — a cream panel with a rounded top edge that rides *over* the dark
-  canvas; each featured card parallaxes its own schematic panel
+  canvas; each featured card parallaxes its own schematic panel. Practice tabs
+  filter the grid with a shared-layout pill and `popLayout` transitions
 - `Contact` — a second rounded dark layer closing over the cream one
 
 `TextReveal` masks headings word-by-word. Wrap a word in `_underscores_` to render it

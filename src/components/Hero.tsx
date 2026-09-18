@@ -90,11 +90,11 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
           >
-            I&rsquo;m Gabriel Paolo — a full-stack web developer and AI automation
-            specialist.{" "}
+            I&rsquo;m Gabriel Paolo. I work across two separate practices.{" "}
             <span className="text-stone-650">
-              I build production websites and web apps end to end, then wire the
-              automations that keep them earning after launch.
+              Full-stack web development — production websites and web apps, built
+              end to end. AI automation — systems that run on their own in n8n,
+              GoHighLevel, and Make.
             </span>
           </motion.p>
 
@@ -134,7 +134,7 @@ export default function Hero() {
             <div className="ml-auto hidden h-6 items-center overflow-hidden lg:flex">
               <span className="mono-label flex items-center gap-2.5 text-stone-650">
                 <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
-                <span className="relative block h-4 w-[240px] overflow-hidden">
+                <span className="relative block h-4 w-[270px] overflow-hidden">
                   {heroTicker.map((t, i) => (
                     <motion.span
                       key={t}

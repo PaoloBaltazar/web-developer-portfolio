@@ -1,9 +1,21 @@
 "use client";
 
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
-import { useRef } from "react";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
+import { useMemo, useRef, useState } from "react";
 import { Eyebrow, FadeUp, TextReveal } from "./primitives";
-import { projects, type Project } from "@/lib/content";
+import {
+  projectFilters,
+  projects,
+  type DisciplineId,
+  type Project,
+} from "@/lib/content";
 
 const ACCENT: Record<Project["accent"], string> = {
   orange: "#cf7822",
@@ -175,7 +187,7 @@ function GridCard({ p, index }: { p: Project; index: number }) {
   const accent = ACCENT[p.accent];
   return (
     <motion.article
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-ink/12 bg-stone-50 p-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-ink/25 hover:shadow-[0_18px_48px_-18px_rgba(39,37,30,0.22)] md:p-7"
+      className="group relative flex w-full flex-col overflow-hidden rounded-xl border border-ink/12 bg-stone-50 p-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-ink/25 hover:shadow-[0_18px_48px_-18px_rgba(39,37,30,0.22)] md:p-7"
       initial={{ opacity: 0, y: 36 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-6% 0px -6% 0px" }}
@@ -216,8 +228,27 @@ function GridCard({ p, index }: { p: Project; index: number }) {
 }
 
 export default function Projects() {
-  const featured = projects.filter((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
+  const [filter, setFilter] = useState<DisciplineId | "all">("all");
+
+  const counts = useMemo(
+    () => ({
+      all: projects.length,
+      web: projects.filter((p) => p.discipline === "web").length,
+      automation: projects.filter((p) => p.discipline === "automation").length,
+    }),
+    [],
+  );
+
+  const visible = useMemo(
+    () =>
+      filter === "all"
+        ? projects
+        : projects.filter((p) => p.discipline === filter),
+    [filter],
+  );
+
+  const featured = visible.filter((p) => p.featured);
+  const rest = visible.filter((p) => !p.featured);
 
   return (
     <section
@@ -244,16 +275,80 @@ export default function Projects() {
           </FadeUp>
         </div>
 
-        <div className="mt-14 space-y-6 md:mt-20">
-          {featured.map((p, i) => (
-            <FeaturedCard key={p.id} p={p} index={i} />
-          ))}
+        {/* Practice filter — the two disciplines are browsable separately */}
+        <FadeUp delay={0.2}>
+          <LayoutGroup id="project-filter">
+            <div
+              role="tablist"
+              aria-label="Filter projects by practice"
+              className="mt-12 flex flex-wrap gap-1.5 md:mt-16"
+            >
+              {projectFilters.map((f) => {
+                const isActive = filter === f.id;
+                return (
+                  <button
+                    key={f.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setFilter(f.id)}
+                    className={`relative rounded-pill px-4 py-2.5 transition-colors duration-300 ${
+                      isActive ? "text-stone-50" : "text-ink/55 hover:text-ink"
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="project-filter-pill"
+                        className="absolute inset-0 rounded-pill bg-ink"
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      />
+                    )}
+                    <span className="mono-label relative flex items-center gap-2">
+                      {f.label}
+                      <span className={isActive ? "text-stone-400" : "text-ink/35"}>
+                        {counts[f.id]}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </LayoutGroup>
+        </FadeUp>
+
+        <div className="mt-10 space-y-6">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {featured.map((p, i) => (
+              <motion.div
+                key={p.id}
+                layout
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16, transition: { duration: 0.3 } }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <FeaturedCard p={p} index={i} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {rest.map((p, i) => (
-            <GridCard key={p.id} p={p} index={i} />
-          ))}
+          <AnimatePresence mode="popLayout" initial={false}>
+            {rest.map((p, i) => (
+              <motion.div
+                key={p.id}
+                layout
+                className="flex"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.97, transition: { duration: 0.3 } }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <GridCard p={p} index={i} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>
