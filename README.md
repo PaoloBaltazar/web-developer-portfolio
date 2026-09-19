@@ -67,6 +67,25 @@ flipping the emphasis later is a data change, not a rewrite.
 replace them with your real profile URLs in `src/lib/content.ts`.
 Also update `SITE` in `src/app/layout.tsx` to your real domain once you have one.
 
+### Logo
+
+The GP monogram is the same mark as the AI automation portfolio — the outlined
+glyph paths were lifted from that site so both stay identical, with no font
+dependency.
+
+- `src/lib/logo.ts` — the two path strings (G and P), viewBoxes and stroke width
+- `src/components/Logo.tsx` — `LogoMark` (full GP), `LogoG` (G alone),
+  `LogoLockup` (mark + hairline rule + wordmark)
+- `src/app/icon.svg` — favicon: the G alone on a dark rounded tile
+
+The mark inherits colour through `currentColor`, so it works on both the dark
+canvas and the cream Projects layer without a second asset.
+
+**Regenerating the favicon.** It is a plain `<g transform>` (not a nested `<svg>`)
+for compatibility. The G is drawn at 48 of 64 units with `stroke-width="30"` —
+much heavier than the 14 used on screen, because at 16px the original hairlines
+render sub-pixel and the glyph disappears. If you re-cut it, check it at 16px.
+
 ### Photo
 
 `public/gabriel-paolo-baltazar.jpg` (864×1210). Referenced via `profile.photo` and

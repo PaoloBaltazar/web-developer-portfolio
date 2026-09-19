@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useState } from "react";
+import { LogoMark } from "./Logo";
 import { profile } from "@/lib/content";
 
 const LINKS = [
@@ -59,14 +60,21 @@ export default function Nav() {
           }`}
         />
         <nav className="shell relative flex h-16 items-center justify-between">
-          <a href="#home" className="group flex items-center gap-2.5" aria-label="Home">
-            <span className="relative grid h-7 w-7 place-items-center overflow-hidden rounded-[7px] border border-stone-100/20 bg-stone-100/5">
-              <span className="font-serif text-[13px] leading-none text-stone-100">
-                gp
-              </span>
-              <span className="absolute inset-0 -translate-y-full bg-orange-500/20 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
-            </span>
-            <span className="text-[15px] font-medium tracking-[-0.01em] text-stone-100">
+          <a
+            href="#home"
+            className="group flex items-center gap-3.5 text-stone-100"
+            aria-label="Home"
+          >
+            <LogoMark
+              height={26}
+              title={profile.name}
+              className="transition-colors duration-500 group-hover:text-orange-500"
+            />
+            <span
+              aria-hidden="true"
+              className="block h-6 w-px bg-stone-100/20 transition-colors duration-500 group-hover:bg-stone-100/35"
+            />
+            <span className="text-[15px] font-medium tracking-[-0.01em]">
               {profile.shortName}
             </span>
           </a>

@@ -1,11 +1,15 @@
+import { LogoMark } from "./Logo";
 import { profile } from "@/lib/content";
 
 export default function Footer() {
   return (
     <footer className="relative z-10 border-t border-stone-100/8 bg-stone-1100">
       <div className="shell flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:justify-between">
-        <span className="mono-label text-stone-700">
-          © {new Date().getFullYear()} {profile.name}
+        <span className="flex items-center gap-3 text-stone-700">
+          <LogoMark height={18} />
+          <span className="mono-label">
+            © {new Date().getFullYear()} {profile.name}
+          </span>
         </span>
         <span className="mono-label text-stone-700">
           {profile.roles.join(" · ")}
