@@ -8,7 +8,7 @@ import { ButtonLink, Eyebrow } from "./primitives";
 import { heroTicker, profile } from "@/lib/content";
 
 const LINE_ONE = "Websites that ship.";
-const LINE_TWO = "Systems that run.";
+const LINE_TWO = "Built end to end.";
 
 function Line({ text, delay }: { text: string; delay: number }) {
   return (
@@ -90,11 +90,11 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
           >
-            I&rsquo;m Gabriel Paolo. I work across two separate practices.{" "}
+            I&rsquo;m Gabriel Paolo, a full-stack web developer. I build production
+            websites and web apps end to end — interface, API, database, tests, and
+            the deploy that carries them.{" "}
             <span className="text-stone-650">
-              Full-stack web development — production websites and web apps, built
-              end to end. AI automation — systems that run on their own in n8n,
-              GoHighLevel, and Make.
+              I also take on AI automation as a separate, smaller practice.
             </span>
           </motion.p>
 
@@ -134,7 +134,7 @@ export default function Hero() {
             <div className="ml-auto hidden h-6 items-center overflow-hidden lg:flex">
               <span className="mono-label flex items-center gap-2.5 text-stone-650">
                 <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
-                <span className="relative block h-4 w-[270px] overflow-hidden">
+                <span className="relative block h-4 w-[290px] overflow-hidden">
                   {heroTicker.map((t, i) => (
                     <motion.span
                       key={t}

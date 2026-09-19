@@ -54,15 +54,15 @@ export default function About() {
             </FadeUp>
             <TextReveal
               as="h2"
-              text="One engineer, two _separate_ practices."
+              text="A full-stack web developer, _first_."
               className="display display-lg mt-7 max-w-[15ch] text-stone-100"
             />
             <FadeUp delay={0.15}>
               <p className="lede mt-7 max-w-[54ch] text-stone-600">
-                Computer Science graduate from Holy Angel University. I take on
-                full-stack web development work and AI automation work as two
-                distinct offers — different toolchains, different deliverables,
-                each hired on its own terms.
+                Computer Science graduate from Holy Angel University. Web
+                development is the work I do most and go deepest on — production
+                sites and web apps, owned from the interface down to the deploy.
+                AI automation is a separate, smaller practice I also take on.
               </p>
             </FadeUp>
           </div>

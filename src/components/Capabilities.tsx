@@ -71,21 +71,44 @@ export default function Capabilities() {
         />
 
         <div className="mt-16 space-y-16">
-          {capabilityPractices.map((practice, pi) => (
+          {capabilityPractices.map((practice, pi) => {
+            const isPrimary = pi === 0;
+            return (
             <div key={practice.id}>
               <FadeUp>
-                <div className="flex items-center gap-4">
-                  <span className="mono-label text-orange-500">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <span
+                    className={`mono-label ${isPrimary ? "text-orange-500" : "text-stone-700"}`}
+                  >
                     0{pi + 1}
                   </span>
-                  <h4 className="display text-[1.5rem] leading-none text-stone-100">
+                  <h4
+                    className={`display leading-none ${
+                      isPrimary
+                        ? "text-[1.75rem] text-stone-100"
+                        : "text-[1.35rem] text-stone-300"
+                    }`}
+                  >
                     {practice.name}
                   </h4>
+                  <span
+                    className={`mono-label rounded-pill border px-2.5 py-1 ${
+                      isPrimary
+                        ? "border-orange-500/30 text-orange-500"
+                        : "border-stone-100/12 text-stone-700"
+                    }`}
+                  >
+                    {practice.tier}
+                  </span>
                   <span className="h-px flex-1 bg-stone-100/12" />
                 </div>
               </FadeUp>
 
-              <Stagger className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <Stagger
+                className={`mt-7 grid gap-5 sm:grid-cols-2 ${
+                  isPrimary ? "lg:grid-cols-4" : "lg:max-w-[52%] lg:grid-cols-2"
+                }`}
+              >
                 {practice.groups.map((group) => (
                   <motion.div
                     key={group.title}
@@ -114,7 +137,8 @@ export default function Capabilities() {
                 ))}
               </Stagger>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

@@ -29,28 +29,40 @@ export const disciplines = [
   {
     id: "web" as const,
     index: "01",
+    tier: "Primary practice",
+    primary: true,
     name: "Web Development",
     role: "Full-Stack Web Developer",
     claim: "Production websites and web apps, built end to end.",
-    body: "Responsive, brand-driven frontends on top of serverless backends, databases, and a real deployment pipeline. I own the whole build: interface, API, schema, tests, and production.",
-    keywords: ["Frontend", "Serverless APIs", "Databases", "E2E testing", "Deployment"],
+    body: "This is the main work. Responsive, brand-driven frontends on top of serverless backends, databases, and a real deployment pipeline — I own the interface, the API, the schema, the tests, and production. Hand-coded when it needs to be, framework-driven when that ships faster.",
+    keywords: [
+      "Next.js & React",
+      "TypeScript",
+      "Serverless APIs",
+      "Postgres / Supabase",
+      "E2E testing",
+      "Deployment",
+    ],
     resume: "/Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf",
   },
   {
     id: "automation" as const,
     index: "02",
+    tier: "Secondary practice",
+    primary: false,
     name: "AI Automation",
     role: "AI Automation Specialist",
     claim: "Systems that run on their own.",
-    body: "CRM, lead, and AI workflows built in self-hosted n8n, GoHighLevel, Make, and Zapier. Sourcing, enrichment, scoring, verification, and human approval — wired into pipelines that keep running unattended.",
-    keywords: ["n8n", "GoHighLevel", "Make · Zapier", "LLM agents", "CRM pipelines"],
+    body: "A separate, smaller line of work: CRM, lead, and AI workflows built in self-hosted n8n, GoHighLevel, Make, and Zapier.",
+    keywords: ["n8n", "GoHighLevel", "Make · Zapier", "LLM agents"],
     resume: "/Gabriel-Paolo-Baltazar-AI-Automation-Resume.pdf",
   },
 ];
 
 export const heroTicker = [
-  "01 — FULL-STACK WEB DEVELOPMENT",
-  "02 — AI AUTOMATION SYSTEMS",
+  "FRONTEND · API · DATABASE · DEPLOY",
+  "NEXT.JS · REACT · TYPESCRIPT",
+  "ALSO: AI AUTOMATION, SEPARATELY",
 ] as const;
 
 export const techMarquee = [
@@ -103,16 +115,16 @@ export const chapters: Chapter[] = [
   {
     index: "04",
     label: "AI automation",
-    title: "A separate practice, with its own stack.",
-    body: "Self-hosted n8n, GoHighLevel, Make, and Zapier wired into revenue pipelines — an 8-microservice GovCon platform on a Docker VPS, AI enrichment through Grok and Gemini, email verification, and approval dashboards gating every send.",
+    title: "A second, smaller practice on the side.",
+    body: "Alongside the web work I take on automation builds: self-hosted n8n, GoHighLevel, Make, and Zapier wired into revenue pipelines — an 8-microservice GovCon platform on a Docker VPS, AI enrichment through Grok and Gemini, and approval dashboards gating every send.",
     planes: ["Triggers", "AI enrichment", "Verification", "Human approval"],
   },
 ];
 
 export const stats = [
+  { value: "50+", label: "Client websites built" },
   { value: "4+", label: "Years writing code" },
   { value: "8", label: "Microservices shipped" },
-  { value: "50+", label: "Client sites built" },
   { value: "10/10", label: "Agent test scenarios passed" },
 ] as const;
 
@@ -152,6 +164,54 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "luxury-presence",
+    discipline: "web",
+    eyebrow: "Web development · Luxury Presence",
+    title: "Real Estate Site Builds",
+    summary:
+      "A year of responsive websites for real estate agents and brokerages — hand-coded and customised on a proprietary CMS, against strict brand standards and fast production timelines.",
+    outcomes: [
+      "Layout and interactive sections written in HTML, CSS, JavaScript and JSON",
+      "Client branding translated into high-converting, mobile-responsive interfaces",
+      "Owned frontend QA — cross-browser and device testing, layout and UX fixes",
+      "Shipped pixel-accurate work alongside internal design and content teams",
+    ],
+    stack: ["HTML/CSS/JS", "JSON", "Proprietary CMS", "Cross-browser QA"],
+    accent: "cobalt",
+    featured: true,
+  },
+  {
+    id: "portfolio",
+    discipline: "web",
+    eyebrow: "Web development · This site",
+    title: "This Portfolio",
+    summary:
+      "A scroll-driven portfolio built on the App Router, with a layered motion system: pinned chapter scrolling, an isometric layer diagram, and a canvas character field that reacts to the pointer.",
+    outcomes: [
+      "Design tokens and type scale expressed as a Tailwind v4 theme",
+      "Word-masked text reveals and per-plane parallax, all reduced-motion safe",
+      "Contact form on a Server Action with validation, honeypot, and Resend delivery",
+      "Static-rendered and deployed on Vercel",
+    ],
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "Motion", "Lenis"],
+    accent: "purple",
+  },
+  {
+    id: "clark-airport",
+    discipline: "web",
+    eyebrow: "Web development · Clark International Airport",
+    title: "Corporate Web Pages",
+    summary:
+      "Developed and maintained company web pages for the airport corporation, with SEO-focused content and frontend improvements, alongside IT support across the organisation.",
+    outcomes: [
+      "SEO-focused content implemented across corporate pages",
+      "Frontend improvements to existing templates",
+      "Internal documentation and digital systems kept current",
+    ],
+    stack: ["HTML/CSS/JS", "SEO", "Content management"],
+    accent: "mint",
+  },
+  {
     id: "govcon",
     discipline: "automation",
     eyebrow: "AI automation · Revenue platform",
@@ -160,29 +220,12 @@ export const projects: Project[] = [
       "An 8-microservice platform that ingests federal contract awards, job postings, RFPs, and teaming signals into a single sales pipeline with AI-drafted outreach.",
     outcomes: [
       "SAM.gov qualification with ICP filters, live from the public API",
-      "Grok-powered enrichment and contact discovery",
-      "ZeroBounce verification before anything enters the send queue",
+      "Grok-powered enrichment, plus ZeroBounce verification before the send queue",
       "Flask approval dashboard with suppression lists and Resend webhooks",
       "Docker Compose on a Hostinger VPS, Caddy for automatic SSL",
     ],
     stack: ["Python", "FastAPI", "Flask", "PostgreSQL", "Docker", "n8n", "Grok (xAI)"],
-    accent: "mint",
-    featured: true,
-  },
-  {
-    id: "luxury-presence",
-    discipline: "web",
-    eyebrow: "Web development · Luxury Presence",
-    title: "Real Estate Site Builds",
-    summary:
-      "Responsive websites for real estate agents and brokerages, hand-coded and customised on a proprietary CMS against strict brand standards.",
-    outcomes: [
-      "Layout and interactive sections written in HTML, CSS, JavaScript and JSON",
-      "Client branding translated into high-converting, mobile-responsive interfaces",
-      "Owned frontend QA — cross-browser and device testing, layout and UX fixes",
-    ],
-    stack: ["HTML/CSS/JS", "JSON", "Proprietary CMS", "Cross-browser QA"],
-    accent: "cobalt",
+    accent: "amber",
   },
   {
     id: "kb-agent",
@@ -196,7 +239,7 @@ export const projects: Project[] = [
       "Zero invented facts across the evaluation set",
     ],
     stack: ["n8n", "Gemini API", "Slack"],
-    accent: "purple",
+    accent: "cobalt",
   },
   {
     id: "lead-routing",
@@ -210,7 +253,7 @@ export const projects: Project[] = [
       "Manual triage of up to a full day reduced to seconds",
     ],
     stack: ["Zapier", "JavaScript", "Airtable"],
-    accent: "amber",
+    accent: "orange",
   },
   {
     id: "dental-snapshot",
@@ -244,10 +287,9 @@ export const projects: Project[] = [
     outcomes: [
       "Segmented nurture raised attendance",
       "Manual follow-up largely eliminated",
-      "CRM tracking and pipeline automation for lead monitoring",
     ],
     stack: ["GoHighLevel", "Email/SMS", "CRM automation"],
-    accent: "orange",
+    accent: "purple",
   },
 ];
 
@@ -287,17 +329,26 @@ export const capabilityPractices = [
   {
     id: "web" as const,
     name: "Web Development",
+    tier: "Primary practice",
     groups: [
       {
         title: "Languages & Frontend",
         items: [
           "JavaScript / TypeScript",
-          "React & Next.js",
           "HTML5 & CSS3",
           "Responsive, mobile-first design",
           "Design systems & UX/UI",
-          "WordPress / Elementor",
           "PHP",
+        ],
+      },
+      {
+        title: "Frameworks & UI",
+        items: [
+          "React & Next.js",
+          "Tailwind CSS",
+          "Motion / scroll-driven UI",
+          "WordPress / Elementor",
+          "Custom plugins",
         ],
       },
       {
@@ -327,37 +378,24 @@ export const capabilityPractices = [
   {
     id: "automation" as const,
     name: "AI Automation",
+    tier: "Secondary practice",
     groups: [
       {
         title: "Automation platforms",
         items: [
           "n8n (self-hosted)",
           "GoHighLevel",
-          "Make",
-          "Zapier",
-          "HubSpot",
-          "Airtable",
+          "Make · Zapier",
+          "HubSpot · Airtable",
         ],
       },
       {
-        title: "AI & LLM integration",
+        title: "AI & integrations",
         items: [
-          "Gemini API",
-          "Grok (xAI)",
-          "Claude Code / Codex",
+          "Gemini API · Grok (xAI)",
           "Knowledge-base agents",
-          "AI enrichment & drafting",
-        ],
-      },
-      {
-        title: "Pipelines & integrations",
-        items: [
           "Webhooks & REST APIs",
           "CRM pipeline design",
-          "Email verification (ZeroBounce)",
-          "Resend & ESP webhooks",
-          "Slack escalation",
-          "Python & Node.js",
         ],
       },
     ],

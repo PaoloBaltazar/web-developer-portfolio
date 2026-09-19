@@ -269,8 +269,8 @@ export default function Projects() {
           />
           <FadeUp delay={0.15}>
             <p className="lede max-w-[38ch] text-ink/55">
-              Production sites, revenue platforms, and automations running for real
-              clients — with the outcome each one produced.
+              Websites and web apps first — then the automation work I take on
+              separately. Each one with the outcome it produced.
             </p>
           </FadeUp>
         </div>

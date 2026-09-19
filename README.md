@@ -38,12 +38,28 @@ npm run lint
 | `experience` | Experience timeline (each entry tagged with its practice) |
 | `capabilityPractices` | Capability cards, grouped under each practice |
 
-### The two practices are deliberately separate
+### Practice hierarchy — read this before editing copy
 
-Copy throughout the site presents **Web Development** and **AI Automation** as two
-independent offers. Neither is described as supporting the other — no "automations
-that keep your site running" framing. If you edit copy, keep that separation:
-they are two things this person is hired for, not one service with an add-on.
+Two rules, and they work together:
+
+1. **Separate.** Web Development and AI Automation are independent offers. Neither
+   is described as supporting the other — no "automations that keep your site
+   running" framing.
+2. **Not equal.** Web development is the *primary* practice and carries the site.
+   AI automation is explicitly *secondary*.
+
+The weighting is expressed structurally, not just in adjectives:
+
+| | Web Development | AI Automation |
+|---|---|---|
+| Practice card (`Practices.tsx`) | Wide (1.55fr), warm accent, solid CTA | Narrow (1fr), muted, text link |
+| Capability groups | 4, full width | 2, capped at 52% width |
+| Featured project slots | Both | None |
+| Project order | First | After |
+| Hero headline & lede | Entire headline; lede opens with it | One closing sentence |
+
+`disciplines[].primary` and `.tier` in `content.ts` drive the card styling, so
+flipping the emphasis later is a data change, not a rewrite.
 
 ### ⚠️ Before you publish
 
