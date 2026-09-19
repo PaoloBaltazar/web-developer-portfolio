@@ -65,7 +65,14 @@ export default function RootLayout({
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable} ${newsreader.variable}`}
     >
-      <body>
+      {/*
+        Browser extensions inject attributes onto <body> before React hydrates
+        (ColorZilla's cz-shortcut-listen, Grammarly, etc.), which trips a
+        hydration warning that has nothing to do with this app. Suppression
+        here applies only to <body>'s own attributes — mismatches anywhere
+        inside the tree still surface normally.
+      */}
+      <body suppressHydrationWarning>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-[100] focus:rounded-full focus:bg-cream focus:px-5 focus:py-2.5 focus:text-sm focus:text-stone-1100"

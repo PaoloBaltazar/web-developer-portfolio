@@ -54,7 +54,7 @@ export default function About() {
             </FadeUp>
             <TextReveal
               as="h2"
-              text="A full-stack web developer, _first_."
+              text="A _full-stack_ web developer."
               className="display display-lg mt-7 max-w-[15ch] text-stone-100"
             />
             <FadeUp delay={0.15}>
