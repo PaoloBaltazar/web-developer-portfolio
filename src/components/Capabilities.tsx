@@ -70,73 +70,86 @@ export default function Capabilities() {
           className="display display-md mt-6 max-w-[16ch] text-stone-100"
         />
 
-        <div className="mt-16 space-y-16">
+        <div className="mt-14 space-y-14 md:mt-16 md:space-y-16">
           {capabilityPractices.map((practice, pi) => {
             const isPrimary = pi === 0;
             return (
-            <div key={practice.id}>
-              <FadeUp>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <span
-                    className={`mono-label ${isPrimary ? "text-orange-500" : "text-stone-700"}`}
-                  >
-                    0{pi + 1}
-                  </span>
-                  <h4
-                    className={`display leading-none ${
-                      isPrimary
-                        ? "text-[1.75rem] text-stone-100"
-                        : "text-[1.35rem] text-stone-300"
-                    }`}
-                  >
-                    {practice.name}
-                  </h4>
-                  <span
-                    className={`mono-label rounded-pill border px-2.5 py-1 ${
-                      isPrimary
-                        ? "border-orange-500/30 text-orange-500"
-                        : "border-stone-100/12 text-stone-700"
-                    }`}
-                  >
-                    {practice.tier}
-                  </span>
-                  <span className="h-px flex-1 bg-stone-100/12" />
-                </div>
-              </FadeUp>
+              <div key={practice.id}>
+                <FadeUp>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <span
+                      className={`mono-label ${isPrimary ? "text-orange-500" : "text-stone-700"}`}
+                    >
+                      0{pi + 1}
+                    </span>
+                    <h4
+                      className={`display leading-none ${
+                        isPrimary
+                          ? "text-[1.75rem] text-stone-100"
+                          : "text-[1.35rem] text-stone-400"
+                      }`}
+                    >
+                      {practice.name}
+                    </h4>
+                    <span
+                      className={`mono-label rounded-pill border px-2.5 py-1 ${
+                        isPrimary
+                          ? "border-orange-500/30 text-orange-500"
+                          : "border-stone-100/12 text-stone-700"
+                      }`}
+                    >
+                      {practice.tier}
+                    </span>
+                    <span className="h-px flex-1 bg-stone-100/12" />
+                  </div>
+                </FadeUp>
 
-              <Stagger
-                className={`mt-7 grid gap-5 sm:grid-cols-2 ${
-                  isPrimary ? "lg:grid-cols-4" : "lg:max-w-[52%] lg:grid-cols-2"
-                }`}
-              >
-                {practice.groups.map((group) => (
-                  <motion.div
-                    key={group.title}
-                    variants={staggerChild}
-                    className="group relative overflow-hidden rounded-xl border border-stone-100/10 bg-stone-100/[0.025] p-5 transition-colors duration-500 hover:border-stone-100/22 hover:bg-stone-100/[0.05]"
-                  >
-                    <div
-                      className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-orange-500/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-                      aria-hidden="true"
-                    />
-                    <h5 className="mono-label relative text-stone-100">
-                      {group.title}
-                    </h5>
-                    <ul className="relative mt-4 space-y-2">
-                      {group.items.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-stone-600"
+                {/* Hairline spec list — no fixed grid, so no empty cells and
+                    no cards stretched past their content. */}
+                <Stagger className="mt-6 md:mt-8">
+                  <dl>
+                    {practice.groups.map((group) => (
+                      <motion.div
+                        key={group.title}
+                        variants={staggerChild}
+                        className="group relative grid gap-3 border-t border-stone-100/10 py-5 last:border-b md:grid-cols-[minmax(0,15rem)_1fr] md:gap-8 md:py-6"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={`absolute inset-x-0 top-0 h-px origin-left scale-x-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 ${
+                            isPrimary ? "bg-orange-500/60" : "bg-stone-100/30"
+                          }`}
+                        />
+
+                        <dt
+                          className={`mono-label transition-colors duration-500 md:pt-1.5 ${
+                            isPrimary
+                              ? "text-stone-200 group-hover:text-orange-500"
+                              : "text-stone-600 group-hover:text-stone-300"
+                          }`}
                         >
-                          <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-stone-700 transition-colors duration-500 group-hover:bg-orange-500/70" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                ))}
-              </Stagger>
-            </div>
+                          {group.title}
+                        </dt>
+
+                        <dd className="flex flex-wrap gap-1.5">
+                          {group.items.map((item) => (
+                            <span
+                              key={item}
+                              className={`mono-label rounded-pill border px-2.5 py-1.5 transition-colors duration-500 ${
+                                isPrimary
+                                  ? "border-stone-100/12 text-stone-500 group-hover:border-stone-100/25 group-hover:text-stone-300"
+                                  : "border-stone-100/8 text-stone-650 group-hover:border-stone-100/18 group-hover:text-stone-500"
+                              }`}
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </dd>
+                      </motion.div>
+                    ))}
+                  </dl>
+                </Stagger>
+              </div>
             );
           })}
         </div>
