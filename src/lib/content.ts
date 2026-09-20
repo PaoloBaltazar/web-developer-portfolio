@@ -155,7 +155,6 @@ export type Project = {
   thumb: string;
   href?: string;
   hrefLabel?: string;
-  accent: "orange" | "mint" | "cobalt" | "purple" | "amber" | "pink";
 };
 
 export const projects: Project[] = [
@@ -175,7 +174,6 @@ export const projects: Project[] = [
     thumb: "/projects/gp-autocare.jpg",
     href: "https://gp-autocare-landing-page.vercel.app/",
     hrefLabel: "Visit live site",
-    accent: "cobalt",
   },
   {
     id: "halston-vale",
@@ -193,7 +191,6 @@ export const projects: Project[] = [
     thumb: "/projects/halston-vale.jpg",
     href: "https://halston-vale.vercel.app/",
     hrefLabel: "Visit live site",
-    accent: "orange",
   },
   {
     id: "mise",
@@ -211,7 +208,6 @@ export const projects: Project[] = [
     thumb: "/projects/mise.jpg",
     href: "https://mise-web-six.vercel.app/",
     hrefLabel: "Visit live site",
-    accent: "amber",
   },
   {
     id: "signet",
@@ -229,7 +225,6 @@ export const projects: Project[] = [
     thumb: "/projects/signet.jpg",
     href: "https://signet-chi-two.vercel.app/",
     hrefLabel: "Visit live site",
-    accent: "mint",
   },
 ];
 

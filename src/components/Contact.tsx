@@ -47,7 +47,7 @@ export default function Contact() {
       </motion.div>
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/3 h-[560px] w-[min(900px,110vw)] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(255,165,87,0.14),transparent_66%)] blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/3 h-[560px] w-[min(900px,110vw)] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.055),transparent_66%)] blur-3xl"
         style={reduce ? undefined : { opacity: glow }}
       />
 
@@ -77,14 +77,14 @@ export default function Contact() {
         <FadeUp delay={0.2}>
           <a
             href={`mailto:${profile.email}`}
-            className="group inline-flex max-w-full items-center gap-4 border-b border-stone-100/15 pb-3 transition-colors duration-500 hover:border-orange-500/70"
+            className="group inline-flex max-w-full items-center gap-4 border-b border-stone-100/15 pb-3 transition-colors duration-500 hover:border-accent/70"
           >
-            <span className="display truncate text-[clamp(1.25rem,2.6vw,1.9rem)] text-stone-100 transition-colors duration-500 group-hover:text-orange-500">
+            <span className="display truncate text-[clamp(1.25rem,2.6vw,1.9rem)] text-stone-100 transition-colors duration-500 group-hover:text-accent">
               {profile.email}
             </span>
             <svg
               viewBox="0 0 16 16"
-              className="h-4 w-4 shrink-0 text-stone-650 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:text-orange-500"
+              className="h-4 w-4 shrink-0 text-stone-650 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:text-accent"
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
@@ -140,7 +140,7 @@ export default function Contact() {
               {d.href ? (
                 <a
                   href={d.href}
-                  className="mt-2 block break-words text-[15px] text-stone-200 transition-colors duration-300 hover:text-orange-500"
+                  className="mt-2 block break-words text-[15px] text-stone-200 transition-colors duration-300 hover:text-accent"
                 >
                   {d.value}
                 </a>

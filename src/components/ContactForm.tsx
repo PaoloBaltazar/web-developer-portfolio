@@ -28,12 +28,13 @@ function Field({
           <motion.p
             id={`${id}-error`}
             role="alert"
-            className="mono-label mt-2 text-orange-500"
+            className="mono-label mt-2 flex items-start gap-1.5 text-accent"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
+            <StatusIcon kind="error" />
             {error}
           </motion.p>
         )}
@@ -42,8 +43,38 @@ function Field({
   );
 }
 
+/** Success and error must be tellable apart with colour ignored (WCAG 1.4.1). */
+function StatusIcon({ kind }: { kind: "success" | "error" }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      className="mt-px h-3.5 w-3.5 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-hidden="true"
+    >
+      {kind === "success" ? (
+        <>
+          <circle cx="8" cy="8" r="6.25" />
+          <path d="m5.2 8.3 1.9 1.9 3.7-4" strokeLinecap="round" strokeLinejoin="round" />
+        </>
+      ) : (
+        <>
+          <path
+            d="M8 2.2 14.4 13.2H1.6L8 2.2Z"
+            strokeLinejoin="round"
+          />
+          <path d="M8 6.6v2.9" strokeLinecap="round" />
+          <circle cx="8" cy="11.4" r="0.55" fill="currentColor" stroke="none" />
+        </>
+      )}
+    </svg>
+  );
+}
+
 const INPUT =
-  "w-full rounded-lg border border-stone-100/12 bg-stone-100/[0.03] px-4 py-3 text-[15px] text-stone-100 placeholder:text-stone-700 transition-colors duration-300 hover:border-stone-100/22 focus:border-orange-500/60 focus:bg-stone-100/[0.05] focus:outline-none";
+  "w-full rounded-lg border border-stone-100/12 aria-[invalid=true]:border-accent/60 bg-stone-100/[0.03] px-4 py-3 text-[15px] text-stone-100 placeholder:text-stone-700 transition-colors duration-300 hover:border-stone-100/22 focus:border-accent/60 focus:bg-stone-100/[0.05] focus:outline-none";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -173,14 +204,13 @@ export default function ContactForm() {
                 <motion.p
                   key={state.message}
                   role="status"
-                  className={`mono-label max-w-[38ch] ${
-                    state.status === "success" ? "text-mint-500" : "text-orange-500"
-                  }`}
+                  className="mono-label flex max-w-[38ch] items-start gap-2 text-accent"
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
+                  <StatusIcon kind={state.status === "success" ? "success" : "error"} />
                   {state.message}
                 </motion.p>
               )}

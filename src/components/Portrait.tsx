@@ -48,18 +48,14 @@ export default function Portrait() {
               alt={`${profile.name}, ${profile.roles.join(" and ")}`}
               fill
               sizes="(max-width: 1024px) 340px, 420px"
-              className="object-cover object-top"
+              className="object-cover object-top grayscale"
               priority={false}
             />
           </motion.div>
 
-          {/* Warm grade so the photo sits inside the palette rather than on it */}
+          {/* Grade the photo down into the canvas rather than sitting it on top */}
           <div
             className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(12,12,11,0.92),rgba(12,12,11,0.12)_45%,transparent)]"
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute inset-0 bg-orange-500/6 mix-blend-overlay"
             aria-hidden="true"
           />
         </div>
@@ -67,15 +63,15 @@ export default function Portrait() {
         {/* Caption plate */}
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
           <div>
-            <div className="mono-label text-orange-500">{profile.shortName}</div>
+            <div className="mono-label text-accent">{profile.shortName}</div>
             <div className="mono-label mt-1.5 text-stone-500">
               {profile.location}
             </div>
           </div>
           <span className="mono-label flex items-center gap-2 text-stone-500">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint-500 opacity-60" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-mint-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
             Open
           </span>

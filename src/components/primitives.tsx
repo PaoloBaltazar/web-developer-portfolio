@@ -21,15 +21,15 @@ export function Eyebrow({
 }) {
   const toneClass =
     tone === "accent"
-      ? "text-orange-500"
+      ? "text-accent"
       : tone === "bright"
         ? "text-stone-200"
         : tone === "ink"
-          ? "text-ink/45"
+          ? "text-ink/60"
           : "text-stone-600";
 
-  // The cream surface needs the darker orange to hold contrast.
-  const dotClass = tone === "ink" ? "bg-orange-600" : "bg-orange-500";
+  // Emphasis inverts on the light Projects panel.
+  const dotClass = tone === "ink" ? "bg-ink" : "bg-accent";
 
   return (
     <span className={`mono-label inline-flex items-center gap-2.5 ${toneClass} ${className}`}>
@@ -56,7 +56,7 @@ export function TextReveal({
   delay = 0,
   stagger = 0.035,
   /** Words wrapped in _underscores_ render in italic serif, Griffin-style. */
-  accentClassName = "italic text-orange-500",
+  accentClassName = "italic text-accent",
 }: {
   text: string;
   as?: React.ElementType;

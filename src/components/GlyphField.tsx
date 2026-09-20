@@ -83,7 +83,7 @@ export default function GlyphField({ className = "" }: { className?: string }) {
           }
 
           if (alpha < 0.03) continue;
-          ctx.fillStyle = `rgba(249, 245, 239, ${Math.min(alpha, 0.72)})`;
+          ctx.fillStyle = `rgba(250, 250, 250, ${Math.min(alpha, 0.72)})`;
           ctx.fillText(cell.g, x, y);
         }
       }

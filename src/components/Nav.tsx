@@ -68,7 +68,7 @@ export default function Nav() {
             <LogoMark
               height={26}
               title={profile.name}
-              className="transition-colors duration-500 group-hover:text-orange-500"
+              className="transition-colors duration-500 group-hover:text-accent"
             />
             <span
               aria-hidden="true"

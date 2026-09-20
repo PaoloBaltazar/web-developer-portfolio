@@ -62,7 +62,7 @@ export default function Hero() {
         className="pointer-events-none absolute left-1/2 top-[8%] -z-20 h-[620px] w-[min(1100px,120vw)] -translate-x-1/2"
         style={reduce ? undefined : { scale: glowScale, opacity: glowOpacity }}
       >
-        <div className="h-full w-full rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(255,165,87,0.13),rgba(255,165,87,0.04)_42%,transparent_70%)] blur-3xl" />
+        <div className="h-full w-full rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),rgba(255,255,255,0.02)_42%,transparent_70%)] blur-3xl" />
       </motion.div>
 
       <div className="relative flex flex-1 flex-col justify-end pt-28">
@@ -133,7 +133,7 @@ export default function Hero() {
             {/* Rotating mono ticker, mirroring Griffin's right-aligned strapline */}
             <div className="ml-auto hidden h-6 items-center overflow-hidden lg:flex">
               <span className="mono-label flex items-center gap-2.5 text-stone-650">
-                <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 <span className="relative block h-4 w-[290px] overflow-hidden">
                   {heroTicker.map((t, i) => (
                     <motion.span

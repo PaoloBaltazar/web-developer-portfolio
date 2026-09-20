@@ -1,46 +1,34 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Design tokens — palette, type scale and spacing mirrored from
-   the Griffin design system (griffin.com) stone/orange ramps.
+   Design tokens. Layout, type scale and spacing follow the Griffin design
+   system (griffin.com); the palette is a neutral greyscale of our own.
    ============================================================ */
 @theme {
-  --color-stone-50: #fdfcf9;
-  --color-stone-100: #f9f5ef;
-  --color-stone-200: #f1ece5;
-  --color-stone-300: #e6e1d9;
-  --color-stone-400: #d4cfc6;
-  --color-stone-500: #c2bcb2;
-  --color-stone-550: #aba69d;
-  --color-stone-600: #959089;
-  --color-stone-650: #7c7771;
-  --color-stone-700: #625d58;
-  --color-stone-800: #514e4b;
-  --color-stone-900: #363533;
-  --color-stone-1000: #1a1918;
-  --color-stone-1100: #0c0c0b;
+  /* Neutral greyscale ramp. Mid-tones sit brighter than a plain desaturation
+     would give, so 11px mono labels clear WCAG AA against the canvas. */
+  --color-stone-50: #ffffff;
+  --color-stone-100: #fafafa;
+  --color-stone-200: #ededed;
+  --color-stone-300: #d4d4d4;
+  --color-stone-400: #bdbdbd;
+  --color-stone-500: #ababab;
+  --color-stone-550: #9e9e9e;
+  --color-stone-600: #9e9e9e;
+  --color-stone-650: #8f8f8f;
+  --color-stone-700: #808080;
+  --color-stone-800: #5c5c5c;
+  --color-stone-900: #3d3d3d;
+  --color-stone-1000: #171717;
+  --color-stone-1100: #0a0a0a;
 
-  --color-ink: #27251e;
-  --color-umber: #271a00;
-  --color-cream: #f9f5ef;
+  --color-ink: #0a0a0a;
+  --color-umber: #0a0a0a;
+  --color-cream: #fafafa;
 
-  --color-orange-100: #fff3eb;
-  --color-orange-200: #ffe8d7;
-  --color-orange-300: #ffd9bd;
-  --color-orange-400: #ffc190;
-  --color-orange-500: #ffa557;
-  --color-orange-550: #ea8d35;
-  --color-orange-600: #cf7822;
-  --color-orange-650: #ae6212;
-  --color-orange-900: #512a03;
-  --color-orange-1000: #2a1200;
-
-  --color-mint-500: #6fd790;
-  --color-mint-600: #45a868;
-  --color-amber-500: #e9b40b;
-  --color-cobalt-500: #aab8fe;
-  --color-purple-500: #b9b2ff;
-  --color-pink-500: #fe99b9;
+  /* The single emphasis token. On dark surfaces anything highlighted steps up
+     to pure white; on the light Projects panel it steps down to `ink`. */
+  --color-accent: #ffffff;
 
   --font-sans: var(--font-geist-sans), -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
   --font-serif: var(--font-newsreader), "Apple Garamond", Baskerville, "Times New Roman", Times, serif;
@@ -81,7 +69,7 @@ body {
 }
 
 ::selection {
-  background: var(--color-orange-500);
+  background: var(--color-accent);
   color: var(--color-stone-1100);
 }
 
@@ -174,7 +162,7 @@ body {
 
 /* ---------- Focus ---------- */
 :where(a, button, input, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--color-orange-500);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 2px;
 }

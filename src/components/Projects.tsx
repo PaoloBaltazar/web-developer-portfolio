@@ -6,18 +6,10 @@ import { useRef } from "react";
 import { Eyebrow, FadeUp, TextReveal } from "./primitives";
 import { projects, type Project } from "@/lib/content";
 
-const ACCENT: Record<Project["accent"], string> = {
-  orange: "#cf7822",
-  mint: "#45a868",
-  cobalt: "#7482fe",
-  purple: "#8e77ff",
-  amber: "#b48a05",
-  pink: "#e5578c",
-};
 
 function Chip({ children }: { children: React.ReactNode }) {
   return (
-    <span className="mono-label rounded-pill border border-ink/14 px-2.5 py-1 text-ink/55">
+    <span className="mono-label rounded-pill border border-ink/20 px-2.5 py-1 text-ink/60">
       {children}
     </span>
   );
@@ -48,8 +40,6 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
   // Gentle drift inside the frame — the image is over-scaled to cover it.
   const mediaY = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
 
-  const accent = ACCENT[p.accent];
-
   return (
     <motion.article
       ref={ref}
@@ -59,10 +49,7 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
       viewport={{ once: true, margin: "-6% 0px -6% 0px" }}
       transition={{ duration: 0.9, delay: (index % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
     >
-      <span
-        className="absolute inset-x-0 top-0 z-20 h-px origin-left scale-x-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
-        style={{ background: accent }}
-      />
+      <span className="absolute inset-x-0 top-0 z-20 h-px origin-left scale-x-0 bg-ink transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
 
       {/* Screenshot of the live site, at its native 16:10 */}
       <div className="relative aspect-[16/10] overflow-hidden border-b border-ink/10 bg-stone-1100">
@@ -75,7 +62,7 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
             alt={`${p.title} — screenshot of the live site`}
             fill
             sizes="(max-width: 1024px) 100vw, 640px"
-            className="object-cover object-top transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+            className="object-cover object-top grayscale transition-[filter,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] group-hover:grayscale-0"
           />
         </motion.div>
         <div
@@ -86,8 +73,8 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
 
       <div className="flex flex-1 flex-col p-7 md:p-8">
         <div className="flex items-center gap-2.5">
-          <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} />
-          <span className="mono-label text-ink/45">{p.eyebrow}</span>
+          <span className="h-1.5 w-1.5 rounded-full bg-ink" />
+          <span className="mono-label text-ink/60">{p.eyebrow}</span>
         </div>
 
         <h3 className="display mt-4 text-[clamp(1.6rem,2.4vw,2rem)] leading-[1.1] text-ink">
@@ -102,9 +89,9 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
             <li key={o} className="flex gap-2.5 text-[13.5px] leading-relaxed text-ink/70">
               <svg
                 viewBox="0 0 16 16"
-                className="mt-[5px] h-3 w-3 shrink-0"
+                className="mt-[5px] h-3 w-3 shrink-0 text-ink"
                 fill="none"
-                stroke={accent}
+                stroke="currentColor"
                 strokeWidth="1.75"
                 aria-hidden="true"
               >
@@ -153,10 +140,10 @@ export default function Projects() {
             as="h2"
             text="Things I have shipped, and what they _changed_."
             className="display display-lg max-w-[16ch] text-ink"
-            accentClassName="italic text-orange-600"
+            accentClassName="italic text-ink"
           />
           <FadeUp delay={0.15}>
-            <p className="lede max-w-[38ch] text-ink/55">
+            <p className="lede max-w-[38ch] text-ink/60">
               Websites and web apps built end to end, each one live — with the
               outcome it produced.
             </p>

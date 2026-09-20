@@ -35,7 +35,7 @@ export default function Capabilities() {
               viewport={{ once: true, margin: "-8% 0px" }}
               transition={{ duration: 0.75, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-orange-500/60 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+              <span className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-accent/60 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
 
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h4 className="text-[1.05rem] font-medium tracking-[-0.01em] text-stone-100">
@@ -46,7 +46,7 @@ export default function Capabilities() {
 
               <div className="mt-2 flex flex-wrap items-center gap-2.5">
                 <span className="mono-label text-stone-400">{e.company}</span>
-                <span className="mono-label rounded-pill border border-stone-100/12 px-2.5 py-1 text-orange-500/80">
+                <span className="mono-label rounded-pill border border-stone-100/12 px-2.5 py-1 text-accent/80">
                   {e.discipline}
                 </span>
               </div>
@@ -78,7 +78,7 @@ export default function Capabilities() {
                 <FadeUp>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                     <span
-                      className={`mono-label ${isPrimary ? "text-orange-500" : "text-stone-700"}`}
+                      className={`mono-label ${isPrimary ? "text-accent" : "text-stone-700"}`}
                     >
                       0{pi + 1}
                     </span>
@@ -94,7 +94,7 @@ export default function Capabilities() {
                     <span
                       className={`mono-label rounded-pill border px-2.5 py-1 ${
                         isPrimary
-                          ? "border-orange-500/30 text-orange-500"
+                          ? "border-accent/30 text-accent"
                           : "border-stone-100/12 text-stone-700"
                       }`}
                     >
@@ -117,14 +117,14 @@ export default function Capabilities() {
                         <span
                           aria-hidden="true"
                           className={`absolute inset-x-0 top-0 h-px origin-left scale-x-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 ${
-                            isPrimary ? "bg-orange-500/60" : "bg-stone-100/30"
+                            isPrimary ? "bg-accent/60" : "bg-stone-100/30"
                           }`}
                         />
 
                         <dt
                           className={`mono-label transition-colors duration-500 md:pt-1.5 ${
                             isPrimary
-                              ? "text-stone-200 group-hover:text-orange-500"
+                              ? "text-stone-200 group-hover:text-accent"
                               : "text-stone-600 group-hover:text-stone-300"
                           }`}
                         >

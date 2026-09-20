@@ -6,7 +6,7 @@ const W = 250;
 const H = 125;
 const GAP = 86;
 
-const ACCENT = "#ffa557";
+const ACCENT = "#ffffff";
 
 function rhombus(cx: number, cy: number, w = W, h = H) {
   return `${cx},${cy - h / 2} ${cx + w / 2},${cy} ${cx},${cy + h / 2} ${cx - w / 2},${cy}`;
@@ -46,8 +46,8 @@ export default function IsoStack({
       >
         <defs>
           <linearGradient id="planeFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#f9f5ef" stopOpacity="0.07" />
-            <stop offset="100%" stopColor="#f9f5ef" stopOpacity="0.015" />
+            <stop offset="0%" stopColor="#fafafa" stopOpacity="0.07" />
+            <stop offset="100%" stopColor="#fafafa" stopOpacity="0.015" />
           </linearGradient>
           <linearGradient id="planeFillActive" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor={ACCENT} stopOpacity="0.16" />
@@ -60,7 +60,7 @@ export default function IsoStack({
             patternUnits="userSpaceOnUse"
             patternTransform="skewY(-26.57)"
           >
-            <circle cx="1" cy="1" r="0.9" fill="#f9f5ef" fillOpacity="0.2" />
+            <circle cx="1" cy="1" r="0.9" fill="#fafafa" fillOpacity="0.2" />
           </pattern>
         </defs>
 
@@ -70,7 +70,7 @@ export default function IsoStack({
           y1={topY}
           x2={cx}
           y2={topY + GAP * (planes.length - 1)}
-          stroke="#f9f5ef"
+          stroke="#fafafa"
           strokeOpacity="0.16"
           strokeWidth="1"
           strokeDasharray="3 5"
@@ -98,17 +98,17 @@ export default function IsoStack({
                   {/* Extruded side wall for thickness */}
                   <polygon
                     points={`${cx - W / 2},${cy} ${cx},${cy + H / 2} ${cx},${cy + H / 2 + 7} ${cx - W / 2},${cy + 7}`}
-                    fill="#0c0c0b"
+                    fill="#0a0a0a"
                     fillOpacity="0.85"
-                    stroke="#f9f5ef"
+                    stroke="#fafafa"
                     strokeOpacity="0.1"
                     strokeWidth="0.75"
                   />
                   <polygon
                     points={`${cx + W / 2},${cy} ${cx},${cy + H / 2} ${cx},${cy + H / 2 + 7} ${cx + W / 2},${cy + 7}`}
-                    fill="#0c0c0b"
+                    fill="#0a0a0a"
                     fillOpacity="0.6"
-                    stroke="#f9f5ef"
+                    stroke="#fafafa"
                     strokeOpacity="0.1"
                     strokeWidth="0.75"
                   />
@@ -117,7 +117,7 @@ export default function IsoStack({
                   <polygon
                     points={rhombus(cx, cy)}
                     fill={isTop ? "url(#planeFillActive)" : "url(#planeFill)"}
-                    stroke={isTop ? ACCENT : "#f9f5ef"}
+                    stroke={isTop ? ACCENT : "#fafafa"}
                     strokeOpacity={isTop ? 0.55 : 0.22 - depth * 0.06}
                     strokeWidth="1"
                   />
@@ -136,7 +136,7 @@ export default function IsoStack({
                         y1={cy - 12}
                         x2={cx + W / 2 + 34}
                         y2={cy - 30}
-                        stroke={isTop ? ACCENT : "#f9f5ef"}
+                        stroke={isTop ? ACCENT : "#fafafa"}
                         strokeOpacity={isTop ? 0.6 : 0.26}
                         strokeWidth="0.75"
                       />
@@ -144,7 +144,7 @@ export default function IsoStack({
                         cx={cx + W / 2 - 34}
                         cy={cy - 12}
                         r="2"
-                        fill={isTop ? ACCENT : "#f9f5ef"}
+                        fill={isTop ? ACCENT : "#fafafa"}
                         fillOpacity={isTop ? 0.9 : 0.4}
                       />
                       <text
@@ -152,7 +152,7 @@ export default function IsoStack({
                         y={cy - 26}
                         fontSize="9.5"
                         letterSpacing="1.1"
-                        fill="#f9f5ef"
+                        fill="#fafafa"
                         fillOpacity={isTop ? 0.92 : 0.5}
                         style={{ fontFamily: "var(--font-geist-mono), monospace" }}
                       >
@@ -166,7 +166,7 @@ export default function IsoStack({
                         y1={cy - 12}
                         x2={cx - W / 2 - 24}
                         y2={cy - 30}
-                        stroke="#f9f5ef"
+                        stroke="#fafafa"
                         strokeOpacity="0.26"
                         strokeWidth="0.75"
                       />
@@ -174,7 +174,7 @@ export default function IsoStack({
                         cx={cx - W / 2 + 34}
                         cy={cy - 12}
                         r="2"
-                        fill="#f9f5ef"
+                        fill="#fafafa"
                         fillOpacity="0.4"
                       />
                       <text
@@ -183,7 +183,7 @@ export default function IsoStack({
                         textAnchor="end"
                         fontSize="9.5"
                         letterSpacing="1.1"
-                        fill="#f9f5ef"
+                        fill="#fafafa"
                         fillOpacity="0.5"
                         style={{ fontFamily: "var(--font-geist-mono), monospace" }}
                       >

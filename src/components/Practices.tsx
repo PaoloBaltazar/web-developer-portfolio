@@ -20,20 +20,20 @@ export default function Practices() {
             variants={staggerChild}
             className={`group relative flex flex-col overflow-hidden rounded-2xl border transition-colors duration-500 ${
               isPrimary
-                ? "border-orange-500/25 bg-[linear-gradient(160deg,rgba(255,165,87,0.07),rgba(249,245,239,0.02)_55%)] p-7 hover:border-orange-500/45 md:p-10"
+                ? "border-accent/25 bg-[linear-gradient(160deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015)_55%)] p-7 hover:border-accent/45 md:p-10"
                 : "border-stone-100/10 bg-stone-100/[0.02] p-7 hover:border-stone-100/20 md:p-8"
             }`}
           >
             {isPrimary && (
               <span
-                className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-orange-500/70 via-orange-500/25 to-transparent"
+                className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-accent/70 via-accent/25 to-transparent"
                 aria-hidden="true"
               />
             )}
             <div
               className={`pointer-events-none absolute -right-10 -top-10 rounded-full blur-3xl transition-opacity duration-700 ${
                 isPrimary
-                  ? "h-56 w-56 bg-orange-500/12 opacity-70 group-hover:opacity-100"
+                  ? "h-56 w-56 bg-accent/12 opacity-70 group-hover:opacity-100"
                   : "h-32 w-32 bg-stone-100/5 opacity-0 group-hover:opacity-100"
               }`}
               aria-hidden="true"
@@ -41,14 +41,14 @@ export default function Practices() {
 
             <div className="relative flex flex-wrap items-center gap-x-3 gap-y-2">
               <span
-                className={`mono-label ${isPrimary ? "text-orange-500" : "text-stone-700"}`}
+                className={`mono-label ${isPrimary ? "text-accent" : "text-stone-700"}`}
               >
                 {d.index}
               </span>
               <span
                 className={`mono-label rounded-pill border px-2.5 py-1 ${
                   isPrimary
-                    ? "border-orange-500/30 text-orange-500"
+                    ? "border-accent/30 text-accent"
                     : "border-stone-100/12 text-stone-700"
                 }`}
               >
@@ -88,7 +88,7 @@ export default function Practices() {
                   key={k}
                   className={`mono-label rounded-pill border px-2.5 py-1 transition-colors duration-500 ${
                     isPrimary
-                      ? "border-orange-500/20 text-stone-400 group-hover:border-orange-500/35 group-hover:text-stone-200"
+                      ? "border-accent/20 text-stone-400 group-hover:border-accent/35 group-hover:text-stone-200"
                       : "border-stone-100/10 text-stone-700 group-hover:text-stone-600"
                   }`}
                 >

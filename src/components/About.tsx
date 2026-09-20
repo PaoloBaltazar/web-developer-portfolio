@@ -85,7 +85,7 @@ export default function About() {
             <motion.div
               key={`bloom-${active}`}
               aria-hidden="true"
-              className="pointer-events-none absolute right-[8%] top-1/2 -z-10 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,165,87,0.11),transparent_62%)] blur-2xl"
+              className="pointer-events-none absolute right-[8%] top-1/2 -z-10 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.05),transparent_62%)] blur-2xl"
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.1 }}
@@ -99,7 +99,7 @@ export default function About() {
               {/* Vertical progress rail */}
               <div className="relative hidden w-px shrink-0 bg-stone-100/10 sm:block">
                 <motion.div
-                  className="absolute inset-x-0 top-0 origin-top bg-gradient-to-b from-orange-500 to-orange-500/20"
+                  className="absolute inset-x-0 top-0 origin-top bg-gradient-to-b from-accent to-accent/20"
                   style={{ scaleY: railScale, height: "100%" }}
                 />
               </div>
@@ -126,7 +126,7 @@ export default function About() {
                         >
                           <span
                             className={`mono-label transition-colors duration-500 ${
-                              isActive ? "text-orange-500" : "text-stone-700"
+                              isActive ? "text-accent" : "text-stone-700"
                             }`}
                           >
                             {c.index}
@@ -143,7 +143,7 @@ export default function About() {
                           <span
                             className={`h-px flex-1 origin-left transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                               isActive
-                                ? "scale-x-100 bg-orange-500/45"
+                                ? "scale-x-100 bg-accent/45"
                                 : "scale-x-0 bg-stone-100/20"
                             }`}
                           />
@@ -199,7 +199,7 @@ export default function About() {
                       key={p}
                       className={`mono-label rounded-lg border px-3 py-3 ${
                         i === 0
-                          ? "border-orange-500/40 bg-orange-500/8 text-stone-100"
+                          ? "border-accent/40 bg-accent/8 text-stone-100"
                           : "border-stone-100/10 bg-stone-100/3 text-stone-600"
                       }`}
                     >

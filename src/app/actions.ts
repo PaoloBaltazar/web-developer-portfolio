@@ -66,12 +66,12 @@ export async function sendMessage(
       subject: `Portfolio enquiry from ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,
       html: `
-        <div style="font-family:ui-sans-serif,system-ui,sans-serif;line-height:1.6;color:#27251e">
-          <p style="margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#7c7771">
+        <div style="font-family:ui-sans-serif,system-ui,sans-serif;line-height:1.6;color:#0a0a0a">
+          <p style="margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#808080">
             Portfolio enquiry
           </p>
           <p style="margin:0 0 16px"><strong>${escapeHtml(name)}</strong> &lt;${escapeHtml(email)}&gt;</p>
-          <div style="white-space:pre-wrap;padding:16px;background:#f9f5ef;border-radius:8px">${escapeHtml(message)}</div>
+          <div style="white-space:pre-wrap;padding:16px;background:#f4f4f4;border-radius:8px">${escapeHtml(message)}</div>
         </div>
       `,
     });
