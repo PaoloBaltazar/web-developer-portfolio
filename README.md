@@ -134,12 +134,10 @@ not in the action file — a `"use server"` module may only export async functio
 
 ### Résumés
 
-Both PDFs sit in `public/` and are wired to download buttons:
-
-- `Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf` — nav, hero, the Web
-  Development practice card, and Contact
-- `Gabriel-Paolo-Baltazar-AI-Automation-Resume.pdf` — the AI Automation practice
-  card and Contact
+`Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf` is the only résumé the
+site publishes — linked from the nav, the hero, the Web Development practice card,
+and Contact. The AI automation résumé was deliberately removed; `disciplines[].resume`
+is optional, so a practice without one simply renders no download link.
 
 To swap one, overwrite the file in `public/` keeping the same filename.
 

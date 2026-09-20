@@ -15,7 +15,6 @@ export const profile = {
   },
   resumes: {
     webDev: "/Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf",
-    automation: "/Gabriel-Paolo-Baltazar-AI-Automation-Resume.pdf",
   },
 } as const;
 
@@ -25,9 +24,23 @@ export const profile = {
    ------------------------------------------------------------------ */
 export type DisciplineId = "web" | "automation";
 
-export const disciplines = [
+type Discipline = {
+  id: DisciplineId;
+  index: string;
+  tier: string;
+  primary: boolean;
+  name: string;
+  role: string;
+  claim: string;
+  body: string;
+  keywords: string[];
+  /** Only the primary practice publishes a résumé. */
+  resume?: string;
+};
+
+export const disciplines: Discipline[] = [
   {
-    id: "web" as const,
+    id: "web",
     index: "01",
     tier: "Primary practice",
     primary: true,
@@ -46,7 +59,7 @@ export const disciplines = [
     resume: "/Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf",
   },
   {
-    id: "automation" as const,
+    id: "automation",
     index: "02",
     tier: "Secondary practice",
     primary: false,
@@ -55,7 +68,6 @@ export const disciplines = [
     claim: "Systems that run on their own.",
     body: "A separate, smaller line of work: CRM, lead, and AI workflows built in self-hosted n8n, GoHighLevel, Make, and Zapier.",
     keywords: ["n8n", "GoHighLevel", "Make · Zapier", "LLM agents"],
-    resume: "/Gabriel-Paolo-Baltazar-AI-Automation-Resume.pdf",
   },
 ];
 

@@ -71,7 +71,7 @@ export default function Contact() {
         </FadeUp>
 
       </div>
-      <div className="shell relative grid gap-12 pb-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-16">
+      <div className="shell relative mt-14 grid gap-12 pb-28 md:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-16">
         <div>
         {/* Oversized email link */}
         <FadeUp delay={0.2}>
@@ -105,31 +105,7 @@ export default function Contact() {
               className="!px-6"
             >
               <span className="inline-flex items-center gap-2.5">
-                Download web developer résumé
-                <svg
-                  viewBox="0 0 16 16"
-                  className="h-3 w-3"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M8 2v9M4.5 7.5 8 11l3.5-3.5M2.5 13.5h11"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </ButtonLink>
-            <ButtonLink
-              href={profile.resumes.automation}
-              variant="outline"
-              download
-              arrow={false}
-            >
-              <span className="inline-flex items-center gap-2.5">
-                AI automation résumé
+                Download résumé
                 <svg
                   viewBox="0 0 16 16"
                   className="h-3 w-3"

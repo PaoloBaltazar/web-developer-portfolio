@@ -97,31 +97,33 @@ export default function Practices() {
               ))}
             </div>
 
-            <a
-              href={d.resume}
-              download
-              className={`mono-label relative mt-7 inline-flex w-fit items-center gap-2 transition-colors duration-300 ${
-                isPrimary
-                  ? "rounded-pill bg-cream px-5 py-2.5 text-stone-1100 hover:bg-white"
-                  : "text-stone-600 hover:text-stone-300"
-              }`}
-            >
-              {isPrimary ? "Download this résumé" : `${d.name} résumé`}
-              <svg
-                viewBox="0 0 16 16"
-                className="h-3 w-3"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                aria-hidden="true"
+            {d.resume && (
+              <a
+                href={d.resume}
+                download
+                className={`mono-label relative mt-7 inline-flex w-fit items-center gap-2 transition-colors duration-300 ${
+                  isPrimary
+                    ? "rounded-pill bg-cream px-5 py-2.5 text-stone-1100 hover:bg-white"
+                    : "text-stone-600 hover:text-stone-300"
+                }`}
               >
-                <path
-                  d="M8 2v9M4.5 7.5 8 11l3.5-3.5M2.5 13.5h11"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
+                {isPrimary ? "Download this résumé" : `${d.name} résumé`}
+                <svg
+                  viewBox="0 0 16 16"
+                  className="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8 2v9M4.5 7.5 8 11l3.5-3.5M2.5 13.5h11"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            )}
           </motion.article>
         );
       })}
