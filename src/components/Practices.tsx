@@ -124,6 +124,31 @@ export default function Practices() {
                 </svg>
               </a>
             )}
+
+            {d.portfolio && (
+              <a
+                href={d.portfolio}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mono-label group/link relative mt-7 inline-flex w-fit items-center gap-2 rounded-pill border border-stone-100/18 px-5 py-2.5 text-stone-300 transition-colors duration-300 hover:border-stone-100/40 hover:text-stone-100"
+              >
+                View automation portfolio
+                <svg
+                  viewBox="0 0 16 16"
+                  className="h-3 w-3 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 12 12 4M6 4h6v6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            )}
           </motion.article>
         );
       })}

@@ -28,13 +28,12 @@ npm run lint
 | Export | Drives |
 |---|---|
 | `profile` | Name, email, phone, location, photo, social links, résumé paths |
-| `disciplines` | The two practice cards in About |
+| `disciplines` | The two practice cards in About. `resume` on the primary, `portfolio` (outbound link) on the secondary |
 | `heroTicker` | Rotating mono strapline in the hero |
 | `techMarquee` | Scrolling tech strip under the hero |
 | `chapters` | The four pinned About chapters + their isometric layer labels |
 | `stats` | The four-up stat row |
-| `projects` | Project cards — `discipline` drives the filter, `featured: true` renders the large split card |
-| `projectFilters` | The All / Web development / AI automation tabs |
+| `projects` | Project cards. Every entry needs a `thumb`; the type enforces it |
 | `experience` | Experience timeline (each entry tagged with its practice) |
 | `capabilityPractices` | Capability cards, grouped under each practice |
 
@@ -54,8 +53,7 @@ The weighting is expressed structurally, not just in adjectives:
 |---|---|---|
 | Practice card (`Practices.tsx`) | Wide (1.55fr), warm accent, solid CTA | Narrow (1fr), muted, text link |
 | Capability groups | 4, full width | 2, capped at 52% width |
-| Featured project slots | Both | None |
-| Project order | First | After |
+| Projects section | All four entries | None — links out to its own portfolio |
 | Hero headline & lede | Entire headline; lede opens with it | One closing sentence |
 
 `disciplines[].primary` and `.tier` in `content.ts` drive the card styling, so
@@ -91,6 +89,11 @@ render sub-pixel and the glyph disappears. If you re-cut it, check it at 16px.
 `public/projects/*.jpg` — 1600x1000 (16:10) captures of each live site, referenced
 by `Project.thumb`. Web projects render them at native aspect above the copy; the
 automation cards have no capture and use the compact text card instead.
+
+The Projects section carries **web work only**. Automation work is represented by
+a single outbound button on the AI Automation practice card, pointing at
+`profile.links.automationPortfolio`. There is no filter UI, because there is
+nothing left to filter.
 
 Captures were taken headless at 1440x900 @2x, then downscaled. The sites animate
 on scroll, so a naive screenshot lands on a half-rendered page — the capture

@@ -36,6 +36,8 @@ type Discipline = {
   keywords: string[];
   /** Only the primary practice publishes a résumé. */
   resume?: string;
+  /** The secondary practice links out to its own portfolio instead. */
+  portfolio?: string;
 };
 
 export const disciplines: Discipline[] = [
@@ -68,6 +70,7 @@ export const disciplines: Discipline[] = [
     claim: "Systems that run on their own.",
     body: "A separate, smaller line of work: CRM, lead, and AI workflows built in self-hosted n8n, GoHighLevel, Make, and Zapier.",
     keywords: ["n8n", "GoHighLevel", "Make · Zapier", "LLM agents"],
+    portfolio: profile.links.automationPortfolio,
   },
 ];
 
@@ -143,24 +146,21 @@ export const stats = [
 /* ---------------- Projects ---------------- */
 export type Project = {
   id: string;
-  discipline: DisciplineId;
   eyebrow: string;
   title: string;
   summary: string;
   outcomes: string[];
   stack: string[];
-  /** 1600x1000 screenshot in /public/projects. */
-  thumb?: string;
+  /** 1600x1000 screenshot in /public/projects. Every project has one. */
+  thumb: string;
   href?: string;
   hrefLabel?: string;
   accent: "orange" | "mint" | "cobalt" | "purple" | "amber" | "pink";
-  featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
     id: "gp-autocare",
-    discipline: "web",
     eyebrow: "Web development · Live in production",
     title: "GP Autocare",
     summary:
@@ -176,11 +176,9 @@ export const projects: Project[] = [
     href: "https://gp-autocare-landing-page.vercel.app/",
     hrefLabel: "Visit live site",
     accent: "cobalt",
-    featured: true,
   },
   {
     id: "halston-vale",
-    discipline: "web",
     eyebrow: "Web development · Live",
     title: "Halston & Vale",
     summary:
@@ -196,11 +194,9 @@ export const projects: Project[] = [
     href: "https://halston-vale.vercel.app/",
     hrefLabel: "Visit live site",
     accent: "orange",
-    featured: true,
   },
   {
     id: "mise",
-    discipline: "web",
     eyebrow: "Web development · Live",
     title: "Mise",
     summary:
@@ -216,11 +212,9 @@ export const projects: Project[] = [
     href: "https://mise-web-six.vercel.app/",
     hrefLabel: "Visit live site",
     accent: "amber",
-    featured: true,
   },
   {
     id: "signet",
-    discipline: "web",
     eyebrow: "Web development · Live",
     title: "Signet",
     summary:
@@ -236,95 +230,9 @@ export const projects: Project[] = [
     href: "https://signet-chi-two.vercel.app/",
     hrefLabel: "Visit live site",
     accent: "mint",
-    featured: true,
-  },
-  {
-    id: "govcon",
-    discipline: "automation",
-    eyebrow: "AI automation · Revenue platform",
-    title: "GovCon Revenue Automation Platform",
-    summary:
-      "An 8-microservice platform that ingests federal contract awards, job postings, RFPs, and teaming signals into a single sales pipeline with AI-drafted outreach.",
-    outcomes: [
-      "SAM.gov qualification with ICP filters, live from the public API",
-      "Grok-powered enrichment, plus ZeroBounce verification before the send queue",
-      "Flask approval dashboard with suppression lists and Resend webhooks",
-      "Docker Compose on a Hostinger VPS, Caddy for automatic SSL",
-    ],
-    stack: ["Python", "FastAPI", "Flask", "PostgreSQL", "Docker", "n8n", "Grok (xAI)"],
-    accent: "amber",
-  },
-  {
-    id: "kb-agent",
-    discipline: "automation",
-    eyebrow: "AI automation",
-    title: "AI Knowledge-Base Support Agent",
-    summary:
-      "A support agent that answers from a 30-entry knowledge base and escalates cleanly to a human in Slack when it cannot.",
-    outcomes: [
-      "Passed 10 of 10 test scenarios",
-      "Zero invented facts across the evaluation set",
-    ],
-    stack: ["n8n", "Gemini API", "Slack"],
-    accent: "cobalt",
-  },
-  {
-    id: "lead-routing",
-    discipline: "automation",
-    eyebrow: "AI automation",
-    title: "Lead Intake, Scoring & Routing Engine",
-    summary:
-      "Scores and routes solar leads in seconds with a 95-point JavaScript model, replacing a manual triage that took anywhere from an hour to a full day.",
-    outcomes: [
-      "95-point scoring model written in JavaScript",
-      "Manual triage of up to a full day reduced to seconds",
-    ],
-    stack: ["Zapier", "JavaScript", "Airtable"],
-    accent: "orange",
-  },
-  {
-    id: "dental-snapshot",
-    discipline: "automation",
-    eyebrow: "AI automation · GoHighLevel",
-    title: "Dental Clinic Snapshot",
-    summary:
-      "A complete dental practice system built in 9 days and packaged as a reusable GoHighLevel snapshot.",
-    outcomes: ["8 workflows", "5-stage pipeline", "5-page funnel", "Delivered in 9 days"],
-    stack: ["GoHighLevel", "Workflows", "Pipelines", "Funnels"],
-    accent: "pink",
-  },
-  {
-    id: "content-engine",
-    discipline: "automation",
-    eyebrow: "AI automation",
-    title: "AI Content Repurposing Engine",
-    summary:
-      "Turns one Google Doc into three review-ready drafts in a single Gemini call.",
-    outcomes: ["Saves 30–45 minutes per piece", "$0 running cost"],
-    stack: ["Make", "Gemini API", "Google Workspace"],
-    accent: "mint",
-  },
-  {
-    id: "webinar-funnels",
-    discipline: "automation",
-    eyebrow: "AI automation · AIVARA",
-    title: "Webinar Automation System",
-    summary:
-      "Automated webinar funnels covering registration, reminders, follow-ups, and offer delivery, with attendee segmentation driving personalised email and SMS.",
-    outcomes: [
-      "Segmented nurture raised attendance",
-      "Manual follow-up largely eliminated",
-    ],
-    stack: ["GoHighLevel", "Email/SMS", "CRM automation"],
-    accent: "purple",
   },
 ];
 
-export const projectFilters = [
-  { id: "all" as const, label: "All work" },
-  { id: "web" as const, label: "Web development" },
-  { id: "automation" as const, label: "AI automation" },
-];
 
 /* ---------------- Experience ---------------- */
 export const experience = [
