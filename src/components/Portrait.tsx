@@ -48,7 +48,7 @@ export default function Portrait() {
               alt={`${profile.name}, ${profile.roles.join(" and ")}`}
               fill
               sizes="(max-width: 1024px) 340px, 420px"
-              className="object-cover object-top grayscale"
+              className="object-cover object-top"
               priority={false}
             />
           </motion.div>
@@ -63,7 +63,7 @@ export default function Portrait() {
         {/* Caption plate */}
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
           <div>
-            <div className="mono-label text-accent">{profile.shortName}</div>
+            <div className="mono-label text-stone-50">{profile.shortName}</div>
             <div className="mono-label mt-1.5 text-stone-500">
               {profile.location}
             </div>

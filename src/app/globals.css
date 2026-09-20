@@ -26,9 +26,13 @@
   --color-umber: #0a0a0a;
   --color-cream: #fafafa;
 
-  /* The single emphasis token. On dark surfaces anything highlighted steps up
-     to pure white; on the light Projects panel it steps down to `ink`. */
-  --color-accent: #ffffff;
+  /* Signal lime — the one colour on the site. Reserved for status and
+     interaction: dots, progress, hover, focus, active markers. Heading
+     emphasis stays monochrome (`stone-50` on dark, `ink` on cream). */
+  --color-accent: #c8f24e;
+  /* Lime is invisible on the cream panel, so touches there darken to
+     this. 5.3:1 on #fafafa. */
+  --color-accent-ink: #4f7300;
 
   --font-sans: var(--font-geist-sans), -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
   --font-serif: var(--font-newsreader), "Apple Garamond", Baskerville, "Times New Roman", Times, serif;

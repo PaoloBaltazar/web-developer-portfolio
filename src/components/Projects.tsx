@@ -49,7 +49,7 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
       viewport={{ once: true, margin: "-6% 0px -6% 0px" }}
       transition={{ duration: 0.9, delay: (index % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
     >
-      <span className="absolute inset-x-0 top-0 z-20 h-px origin-left scale-x-0 bg-ink transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+      <span className="absolute inset-x-0 top-0 z-20 h-px origin-left scale-x-0 bg-accent-ink transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
 
       {/* Screenshot of the live site, at its native 16:10 */}
       <div className="relative aspect-[16/10] overflow-hidden border-b border-ink/10 bg-stone-1100">
@@ -62,7 +62,7 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
             alt={`${p.title} — screenshot of the live site`}
             fill
             sizes="(max-width: 1024px) 100vw, 640px"
-            className="object-cover object-top grayscale transition-[filter,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] group-hover:grayscale-0"
+            className="object-cover object-top transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />
         </motion.div>
         <div
@@ -73,7 +73,7 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
 
       <div className="flex flex-1 flex-col p-7 md:p-8">
         <div className="flex items-center gap-2.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-ink" />
+          <span className="h-1.5 w-1.5 rounded-full bg-accent-ink" />
           <span className="mono-label text-ink/60">{p.eyebrow}</span>
         </div>
 

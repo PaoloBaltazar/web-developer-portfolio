@@ -29,7 +29,7 @@ export function Eyebrow({
           : "text-stone-600";
 
   // Emphasis inverts on the light Projects panel.
-  const dotClass = tone === "ink" ? "bg-ink" : "bg-accent";
+  const dotClass = tone === "ink" ? "bg-accent-ink" : "bg-accent";
 
   return (
     <span className={`mono-label inline-flex items-center gap-2.5 ${toneClass} ${className}`}>
@@ -56,7 +56,7 @@ export function TextReveal({
   delay = 0,
   stagger = 0.035,
   /** Words wrapped in _underscores_ render in italic serif, Griffin-style. */
-  accentClassName = "italic text-accent",
+  accentClassName = "italic text-stone-50",
 }: {
   text: string;
   as?: React.ElementType;

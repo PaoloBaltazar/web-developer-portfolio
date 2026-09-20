@@ -28,7 +28,7 @@ function Field({
           <motion.p
             id={`${id}-error`}
             role="alert"
-            className="mono-label mt-2 flex items-start gap-1.5 text-accent"
+            className="mono-label mt-2 flex items-start gap-1.5 text-stone-50"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
@@ -74,7 +74,7 @@ function StatusIcon({ kind }: { kind: "success" | "error" }) {
 }
 
 const INPUT =
-  "w-full rounded-lg border border-stone-100/12 aria-[invalid=true]:border-accent/60 bg-stone-100/[0.03] px-4 py-3 text-[15px] text-stone-100 placeholder:text-stone-700 transition-colors duration-300 hover:border-stone-100/22 focus:border-accent/60 focus:bg-stone-100/[0.05] focus:outline-none";
+  "w-full rounded-lg border border-stone-100/12 aria-[invalid=true]:border-stone-100/60 bg-stone-100/[0.03] px-4 py-3 text-[15px] text-stone-100 placeholder:text-stone-700 transition-colors duration-300 hover:border-stone-100/22 focus:border-accent/60 focus:bg-stone-100/[0.05] focus:outline-none";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -204,7 +204,7 @@ export default function ContactForm() {
                 <motion.p
                   key={state.message}
                   role="status"
-                  className="mono-label flex max-w-[38ch] items-start gap-2 text-accent"
+                  className="mono-label flex max-w-[38ch] items-start gap-2 text-stone-50"
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
