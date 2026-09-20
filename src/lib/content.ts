@@ -137,6 +137,8 @@ export type Project = {
   summary: string;
   outcomes: string[];
   stack: string[];
+  /** 1600x1000 screenshot in /public/projects. */
+  thumb?: string;
   href?: string;
   hrefLabel?: string;
   accent: "orange" | "mint" | "cobalt" | "purple" | "amber" | "pink";
@@ -150,7 +152,7 @@ export const projects: Project[] = [
     eyebrow: "Web development · Live in production",
     title: "GP Autocare",
     summary:
-      "A multi-page marketing site built from scratch in vanilla HTML, CSS, and JavaScript, sitting on top of an end-to-end serverless lead pipeline that never drops a submission.",
+      "A multi-page marketing site for an auto detailing studio, built from scratch in vanilla HTML, CSS, and JavaScript, sitting on top of an end-to-end serverless lead pipeline that never drops a submission.",
     outcomes: [
       "Custom design system with persistent dark/light theming",
       "Vercel function → Supabase Postgres → automated Resend email, with fault-tolerant submission handling",
@@ -158,58 +160,71 @@ export const projects: Project[] = [
       "Playwright E2E and browser-QA suite, deployed through Doppler",
     ],
     stack: ["HTML/CSS/JS", "Vercel Functions", "Supabase", "Resend", "Playwright", "Doppler"],
-    href: profile.links.autocare,
+    thumb: "/projects/gp-autocare.jpg",
+    href: "https://gp-autocare-landing-page.vercel.app/",
+    hrefLabel: "Visit live site",
+    accent: "cobalt",
+    featured: true,
+  },
+  {
+    id: "halston-vale",
+    discipline: "web",
+    eyebrow: "Web development · Live",
+    title: "Halston & Vale",
+    summary:
+      "A private brokerage site for South Florida's coastal and urban estates — a full-bleed cinematic video hero over a deliberately small, curated collection of listings.",
+    outcomes: [
+      "Video hero with an editorial type treatment layered over it",
+      "Six-property collection with status, pricing and per-square-foot detail",
+      "Press strip, firm narrative, and a private-consultation funnel",
+      "Animated volume counters and scroll-revealed sections throughout",
+    ],
+    stack: ["Next.js", "React", "Scroll animation", "Vercel"],
+    thumb: "/projects/halston-vale.jpg",
+    href: "https://halston-vale.vercel.app/",
     hrefLabel: "Visit live site",
     accent: "orange",
     featured: true,
   },
   {
-    id: "luxury-presence",
+    id: "mise",
     discipline: "web",
-    eyebrow: "Web development · Luxury Presence",
-    title: "Real Estate Site Builds",
+    eyebrow: "Web development · Live",
+    title: "Mise",
     summary:
-      "A year of responsive websites for real estate agents and brokerages — hand-coded and customised on a proprietary CMS, against strict brand standards and fast production timelines.",
+      "A product site for a culinary archive — a searchable home for techniques, pairings and plating ideas, where you search by the way a dish tastes rather than by keyword.",
     outcomes: [
-      "Layout and interactive sections written in HTML, CSS, JavaScript and JSON",
-      "Client branding translated into high-converting, mobile-responsive interfaces",
-      "Owned frontend QA — cross-browser and device testing, layout and UX fixes",
-      "Shipped pixel-accurate work alongside internal design and content teams",
+      "Flavour-profile search across heat, acid, fat and colour",
+      "Visual tone matching that surfaces dishes from a single swatch",
+      "Masonry collection boards mixing photos, notes and recipes",
+      "Identify flow that reads ingredients and techniques back from a photo",
     ],
-    stack: ["HTML/CSS/JS", "JSON", "Proprietary CMS", "Cross-browser QA"],
-    accent: "cobalt",
+    stack: ["React", "Vite", "CSS", "Vercel"],
+    thumb: "/projects/mise.jpg",
+    href: "https://mise-web-six.vercel.app/",
+    hrefLabel: "Visit live site",
+    accent: "amber",
     featured: true,
   },
   {
-    id: "portfolio",
+    id: "signet",
     discipline: "web",
-    eyebrow: "Web development · This site",
-    title: "This Portfolio",
+    eyebrow: "Web development · Live",
+    title: "Signet",
     summary:
-      "A scroll-driven portfolio built on the App Router, with a layered motion system: pinned chapter scrolling, an isometric layer diagram, and a canvas character field that reacts to the pointer.",
+      "A product site for a contract e-signature tool — draft, send and sign in one link, with the signing flow rendered as live interface rather than flat mockups.",
     outcomes: [
-      "Design tokens and type scale expressed as a Tailwind v4 theme",
-      "Word-masked text reveals and per-plane parallax, all reduced-motion safe",
-      "Contact form on a Server Action with validation, honeypot, and Resend delivery",
-      "Static-rendered and deployed on Vercel",
+      "Three-step narrative: drop in a document, place fields, send for signature",
+      "Signing order with approvers and per-party field assignment",
+      "Audit trail with timestamps and IPs, plus qualified eIDAS signatures",
+      "Product UI built in-page, including a drag-to-place field editor",
     ],
-    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "Motion", "Lenis"],
-    accent: "purple",
-  },
-  {
-    id: "clark-airport",
-    discipline: "web",
-    eyebrow: "Web development · Clark International Airport",
-    title: "Corporate Web Pages",
-    summary:
-      "Developed and maintained company web pages for the airport corporation, with SEO-focused content and frontend improvements, alongside IT support across the organisation.",
-    outcomes: [
-      "SEO-focused content implemented across corporate pages",
-      "Frontend improvements to existing templates",
-      "Internal documentation and digital systems kept current",
-    ],
-    stack: ["HTML/CSS/JS", "SEO", "Content management"],
+    stack: ["Next.js", "React", "Product UI", "Vercel"],
+    thumb: "/projects/signet.jpg",
+    href: "https://signet-chi-two.vercel.app/",
+    hrefLabel: "Visit live site",
     accent: "mint",
+    featured: true,
   },
   {
     id: "govcon",

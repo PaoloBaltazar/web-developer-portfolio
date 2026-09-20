@@ -86,6 +86,22 @@ for compatibility. The G is drawn at 48 of 64 units with `stroke-width="30"` —
 much heavier than the 14 used on screen, because at 16px the original hairlines
 render sub-pixel and the glyph disappears. If you re-cut it, check it at 16px.
 
+### Project thumbnails
+
+`public/projects/*.jpg` — 1600x1000 (16:10) captures of each live site, referenced
+by `Project.thumb`. Web projects render them at native aspect above the copy; the
+automation cards have no capture and use the compact text card instead.
+
+Captures were taken headless at 1440x900 @2x, then downscaled. The sites animate
+on scroll, so a naive screenshot lands on a half-rendered page — the capture
+script scrolls the full page first to fire every reveal, returns to the top, waits
+for fonts and any hero video, and only then shoots. Signet is captured at a scroll
+offset of 860 rather than 0, because its hero is mostly whitespace until the
+product mockup comes into frame.
+
+To re-shoot, use Playwright with that scroll-then-return pattern and export at
+1600px wide, JPEG quality ~82 (each file lands around 120–190 KB).
+
 ### Photo
 
 `public/gabriel-paolo-baltazar.jpg` (864×1210). Referenced via `profile.photo` and
