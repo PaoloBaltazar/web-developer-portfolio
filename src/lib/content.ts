@@ -8,8 +8,8 @@ export const profile = {
   availability: "Available for new work",
   photo: "/gabriel-paolo-baltazar.jpg",
   links: {
-    github: "https://github.com/",
-    linkedin: "https://www.linkedin.com/",
+    github: "https://github.com/PaoloBaltazar",
+    linkedin: "https://www.linkedin.com/in/paolo-baltazar-b4733218b/",
     automationPortfolio: "https://gabriel-paolo-portfolio.vercel.app/",
     autocare: "https://gp-autocare-landing-page.vercel.app/",
   },
