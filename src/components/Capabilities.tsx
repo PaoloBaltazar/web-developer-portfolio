@@ -15,12 +15,12 @@ export default function Capabilities() {
           </FadeUp>
           <TextReveal
             as="h3"
-            text="Where the reps came from."
+            text="Experience behind the _work_."
             className="display display-md mt-6 max-w-[12ch] text-stone-100"
           />
           <FadeUp delay={0.15}>
             <p className="mt-5 max-w-[34ch] text-[14.5px] leading-relaxed text-stone-600">
-              Each role is tagged with the practice it belongs to.
+              Website updates, content management, and quality checks shaped how I approach each build.
             </p>
           </FadeUp>
         </div>
@@ -66,7 +66,7 @@ export default function Capabilities() {
         </FadeUp>
         <TextReveal
           as="h3"
-          text="Two stacks, kept _apart_."
+          text="The skills behind each _build_."
           className="display display-md mt-6 max-w-[16ch] text-stone-100"
         />
 

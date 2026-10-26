@@ -1,7 +1,7 @@
 export const profile = {
   name: "Gabriel Paolo Baltazar",
   shortName: "Gabriel Paolo",
-  roles: ["Web Developer", "AI Automation Specialist"],
+  roles: ["Web Developer", "WordPress Developer"],
   email: "gpaolobaltazar@gmail.com",
   phone: "+63 976 573 7246",
   location: "Pampanga, Philippines",
@@ -14,7 +14,7 @@ export const profile = {
     autocare: "https://gp-autocare-landing-page.vercel.app/",
   },
   resumes: {
-    webDev: "/Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf",
+    webDev: "/Gabriel-Paolo-Baltazar-Web-Developer-Resume.pdf",
   },
 } as const;
 
@@ -47,18 +47,18 @@ export const disciplines: Discipline[] = [
     tier: "Primary practice",
     primary: true,
     name: "Web Development",
-    role: "Full-Stack Web Developer",
-    claim: "Production websites and web apps, built end to end.",
-    body: "This is the main work. Responsive, brand-driven frontends on top of serverless backends, databases, and a real deployment pipeline — I own the interface, the API, the schema, the tests, and production. Hand-coded when it needs to be, framework-driven when that ships faster.",
+    role: "Web Developer",
+    claim: "Responsive websites, built around your brand.",
+    body: "I build and customize websites with WordPress, Elementor, WooCommerce, HTML, CSS, and JavaScript. From page layouts and storefronts to content updates and quality checks, I focus on websites that look consistent and work well across devices.",
     keywords: [
-      "Next.js & React",
-      "TypeScript",
-      "Serverless APIs",
-      "Postgres / Supabase",
-      "E2E testing",
-      "Deployment",
+      "WordPress & Elementor",
+      "WooCommerce",
+      "HTML / CSS / JavaScript",
+      "Responsive design",
+      "Content management",
+      "Website QA",
     ],
-    resume: "/Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf",
+    resume: profile.resumes.webDev,
   },
   {
     id: "automation",
@@ -75,23 +75,23 @@ export const disciplines: Discipline[] = [
 ];
 
 export const heroTicker = [
-  "FRONTEND · API · DATABASE · DEPLOY",
-  "NEXT.JS · REACT · TYPESCRIPT",
+  "WORDPRESS · ELEMENTOR · WOOCOMMERCE",
+  "HTML · CSS · JAVASCRIPT",
   "ALSO: AI AUTOMATION, SEPARATELY",
 ] as const;
 
 export const techMarquee = [
-  "Next.js",
-  "TypeScript",
+  "WordPress",
+  "Elementor",
+  "WooCommerce",
+  "WPBakery",
+  "HTML5",
+  "CSS3",
+  "JavaScript",
+  "Figma",
+  "Webflow",
   "React",
-  "Supabase",
-  "Vercel",
-  "Python",
-  "FastAPI",
-  "Docker",
-  "n8n",
-  "PostgreSQL",
-  "GoHighLevel",
+  "Next.js",
   "Playwright",
 ] as const;
 
@@ -109,23 +109,23 @@ export const chapters: Chapter[] = [
   {
     index: "01",
     label: "The foundation",
-    title: "Engineering fundamentals, not template shuffling.",
-    body: "A BS in Computer Science from Holy Angel University as a consistent honor student, with coursework in data structures, web development, cybersecurity, and machine learning. I read the stack before I reach for the framework.",
+    title: "A foundation in Computer Science.",
+    body: "A BS in Computer Science from Holy Angel University as a consistent honor student, with coursework in data structures, web development, cybersecurity, and machine learning. That foundation informs how I build, troubleshoot, and improve websites.",
     planes: ["Data structures", "Web development", "Cybersecurity", "Machine learning"],
   },
   {
     index: "02",
     label: "Web development",
-    title: "Production websites, hand-coded and shipped on deadline.",
-    body: "A year at Luxury Presence building and customizing responsive real estate sites — hand-writing layout and interactive sections in HTML, CSS, JavaScript, and JSON on a proprietary CMS, and owning frontend QA across browsers and devices.",
-    planes: ["Brand-driven UI", "Responsive layout", "Cross-browser QA", "Performance passes"],
+    title: "Careful updates. Consistent websites.",
+    body: "At Luxury Presence, I updated real estate websites on a proprietary CMS, edited layouts with HTML, CSS, JavaScript, and JSON, and checked content across browsers and devices. Every update followed client requirements, brand guidelines, and deadlines.",
+    planes: ["Content accuracy", "Page layouts", "Brand consistency", "Cross-browser QA"],
   },
   {
     index: "03",
-    label: "Full-stack delivery",
-    title: "UI, API, data, tests, and the deploy that carries it.",
-    body: "On GP Autocare I owned the entire pipeline: a hand-built frontend against a Vercel serverless function, Supabase Postgres, and automated Resend email — covered by a Playwright end-to-end suite and shipped through Doppler.",
-    planes: ["Interface", "Serverless API", "Postgres", "E2E coverage"],
+    label: "WordPress development",
+    title: "From storefront design to product details.",
+    body: "For Luma Skin, I built a responsive skincare store with WordPress, Elementor, and WooCommerce. I customized page layouts and styling, set up the catalog and shopping cart, and configured product categories, pricing, and inventory.",
+    planes: ["WordPress", "Elementor layouts", "WooCommerce", "Product management"],
   },
   {
     index: "04",
@@ -137,10 +137,10 @@ export const chapters: Chapter[] = [
 ];
 
 export const stats = [
-  { value: "50+", label: "Client websites built" },
-  { value: "4+", label: "Years writing code" },
-  { value: "8", label: "Microservices shipped" },
-  { value: "10/10", label: "Agent test scenarios passed" },
+  { value: "CMS", label: "WordPress & Elementor" },
+  { value: "Shop", label: "WooCommerce storefronts" },
+  { value: "Code", label: "HTML, CSS & JavaScript" },
+  { value: "QA", label: "Content & layout checks" },
 ] as const;
 
 /* ---------------- Projects ---------------- */
@@ -151,13 +151,27 @@ export type Project = {
   summary: string;
   outcomes: string[];
   stack: string[];
-  /** 1600x1000 screenshot in /public/projects. Every project has one. */
-  thumb: string;
+  /** Optional live-site screenshot; unpublished work uses a text overview. */
+  thumb?: string;
   href?: string;
   hrefLabel?: string;
 };
 
 export const projects: Project[] = [
+  {
+    id: "luma-skin",
+    eyebrow: "WordPress development · Not yet published",
+    title: "Luma Skin",
+    summary:
+      "A responsive skincare e-commerce website built with WordPress, Elementor, and WooCommerce, with a customized storefront and a consistent shopping experience.",
+    outcomes: [
+      "Customized page layouts and CSS styling across the storefront",
+      "Product catalog and shopping cart functionality",
+      "Product listings, categories, pricing, and inventory configuration",
+      "Responsive layouts for a user-friendly shopping experience",
+    ],
+    stack: ["WordPress", "Elementor", "WooCommerce", "CSS"],
+  },
   {
     id: "gp-autocare",
     eyebrow: "Web development · Live in production",
@@ -234,9 +248,9 @@ export const experience = [
   {
     company: "Luxury Presence",
     role: "Junior Web Builder",
-    period: "Jul 2025 — Jul 2026",
+    period: "Aug 2025 — Aug 2026",
     discipline: "Web development",
-    note: "Hand-coded responsive real estate sites on a proprietary CMS; owned frontend QA and performance.",
+    note: "Updated real estate website content and layouts using HTML, CSS, JavaScript, and JSON on a proprietary CMS. Checked content accuracy, brand consistency, and layouts across browsers and devices while meeting deadlines.",
   },
   {
     company: "Freelance",
@@ -250,7 +264,7 @@ export const experience = [
     role: "Web Developer & IT Support Intern",
     period: "Dec 2024 — Mar 2025",
     discipline: "Web development",
-    note: "Built and maintained company web pages with SEO-focused content and frontend improvements.",
+    note: "Assisted with company websites, SEO-focused content, and frontend improvements. Provided office IT support and software troubleshooting.",
   },
 ] as const;
 
@@ -262,45 +276,31 @@ export const capabilityPractices = [
     tier: "Primary practice",
     groups: [
       {
-        title: "Languages & Frontend",
+        title: "WordPress & E-commerce",
         items: [
-          "JavaScript / TypeScript",
-          "HTML5 & CSS3",
-          "Responsive, mobile-first design",
-          "Design systems & UX/UI",
-          "PHP",
+          "WordPress", "Elementor", "WPBakery", "WooCommerce",
+          "Storefront customization", "Product & inventory management",
         ],
       },
       {
-        title: "Frameworks & UI",
+        title: "Web Development",
         items: [
-          "React & Next.js",
-          "Tailwind CSS",
-          "Motion / scroll-driven UI",
-          "WordPress / Elementor",
-          "Custom plugins",
+          "HTML5 & CSS3", "JavaScript / TypeScript", "Responsive web design",
+          "UI/UX implementation", "React & Next.js", "Supabase & REST APIs",
         ],
       },
       {
-        title: "Backend, Data & DevOps",
+        title: "Design & Website Management",
         items: [
-          "Supabase (Postgres)",
-          "REST APIs",
-          "Vercel Serverless Functions",
-          "FastAPI & Flask",
-          "SQL",
-          "Docker",
-          "Git",
+          "Figma", "Canva", "Webflow", "Content management",
+          "Page layout customization", "SEO-focused content",
         ],
       },
       {
-        title: "Testing & QA",
+        title: "Quality & Maintenance",
         items: [
-          "Playwright E2E",
-          "Cross-browser testing",
-          "Device & responsive QA",
-          "Accessibility passes",
-          "Performance tuning",
+          "Cross-browser testing", "Device & responsive QA",
+          "Content accuracy checks", "Website troubleshooting", "Playwright E2E",
         ],
       },
     ],

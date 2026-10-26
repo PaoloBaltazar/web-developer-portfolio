@@ -51,8 +51,9 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
     >
       <span className="absolute inset-x-0 top-0 z-20 h-px origin-left scale-x-0 bg-accent-ink transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
 
-      {/* Screenshot of the live site, at its native 16:10 */}
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-ink/10 bg-stone-1100">
+      {/* Live-site capture or a text overview for unpublished work. */}
+      <div className={`relative aspect-[16/10] overflow-hidden border-b border-ink/10 bg-stone-1100 ${p.thumb ? "" : "min-h-[260px] sm:min-h-0"}`}>
+        {p.thumb ? (
         <motion.div
           className="absolute inset-0 scale-[1.06]"
           style={reduce ? undefined : { y: mediaY }}
@@ -65,6 +66,20 @@ function FeaturedCard({ p, index }: { p: Project; index: number }) {
             className="object-cover object-top transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />
         </motion.div>
+        ) : (
+          <div className="absolute inset-0 flex flex-col justify-between p-7 text-stone-100 md:p-10">
+            <span className="mono-label text-stone-600">Project overview · E-commerce</span>
+            <div>
+              <p className="display text-[clamp(2.5rem,5vw,4.5rem)] leading-none">{p.title}</p>
+              <p className="mt-4 text-sm text-stone-500">WordPress / Elementor / WooCommerce</p>
+            </div>
+            <div className="mono-label flex flex-wrap gap-x-5 gap-y-2 border-t border-stone-100/15 pt-4 text-stone-600">
+              <span>Storefront</span>
+              <span>Product catalog</span>
+              <span>Shopping cart</span>
+            </div>
+          </div>
+        )}
         <div
           className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-ink/10"
           aria-hidden="true"
@@ -138,14 +153,14 @@ export default function Projects() {
         <div className="mt-7 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <TextReveal
             as="h2"
-            text="Things I have shipped, and what they _changed_."
+            text="Websites built with _purpose_."
             className="display display-lg max-w-[16ch] text-ink"
             accentClassName="italic text-ink"
           />
           <FadeUp delay={0.15}>
             <p className="lede max-w-[38ch] text-ink/60">
-              Websites and web apps built end to end, each one live — with the
-              outcome it produced.
+              From a WordPress storefront to custom websites and web interfaces —
+              a selection of my work and the details behind each build.
             </p>
           </FadeUp>
         </div>

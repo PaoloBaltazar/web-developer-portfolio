@@ -1,6 +1,6 @@
 # Gabriel Paolo Baltazar — Portfolio
 
-Personal portfolio for a **Web Developer / AI Automation Specialist**, built to the
+Personal portfolio for a **Web Developer / WordPress Developer**, with AI automation as a secondary practice, built to the
 [griffin.com](https://www.griffin.com/) design language — its stone/orange palette,
 light-serif display type, mono labels, and layered scroll-driven depth.
 
@@ -32,8 +32,8 @@ npm run lint
 | `heroTicker` | Rotating mono strapline in the hero |
 | `techMarquee` | Scrolling tech strip under the hero |
 | `chapters` | The four pinned About chapters + their isometric layer labels |
-| `stats` | The four-up stat row |
-| `projects` | Project cards. Every entry needs a `thumb`; the type enforces it |
+| `stats` | The four-up skills highlight row |
+| `projects` | Project cards. Optional `thumb` for live-site captures; unpublished work uses a text overview |
 | `experience` | Experience timeline (each entry tagged with its practice) |
 | `capabilityPractices` | Capability cards, grouped under each practice |
 
@@ -53,7 +53,7 @@ The weighting is expressed structurally, not just in adjectives:
 |---|---|---|
 | Practice card (`Practices.tsx`) | Wide (1.55fr), warm accent, solid CTA | Narrow (1fr), muted, text link |
 | Capability groups | 4, full width | 2, capped at 52% width |
-| Projects section | All four entries | None — links out to its own portfolio |
+| Projects section | All five entries | None — links out to its own portfolio |
 | Hero headline & lede | Entire headline; lede opens with it | One closing sentence |
 
 `disciplines[].primary` and `.tier` in `content.ts` drive the card styling, so
@@ -87,8 +87,8 @@ render sub-pixel and the glyph disappears. If you re-cut it, check it at 16px.
 ### Project thumbnails
 
 `public/projects/*.jpg` — 1600x1000 (16:10) captures of each live site, referenced
-by `Project.thumb`. Web projects render them at native aspect above the copy; the
-automation cards have no capture and use the compact text card instead.
+by `Project.thumb`. Published web projects render them at native aspect above the copy. Luma Skin
+uses a text overview and has no live link until it is published.
 
 The Projects section carries **web work only**. Automation work is represented by
 a single outbound button on the AI Automation practice card, pointing at
@@ -137,8 +137,8 @@ not in the action file — a `"use server"` module may only export async functio
 
 ### Résumés
 
-`Gabriel-Paolo-Baltazar-Full-Stack-Developer-Resume.pdf` is the only résumé the
-site publishes — linked from the nav, the hero, the Web Development practice card,
+`Gabriel-Paolo-Baltazar-Web-Developer-Resume.pdf` is the current résumé the
+site links to — linked from the nav, the hero, the Web Development practice card,
 and Contact. The AI automation résumé was deliberately removed; `disciplines[].resume`
 is optional, so a practice without one simply renders no download link.
 

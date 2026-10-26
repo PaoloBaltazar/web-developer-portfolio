@@ -64,9 +64,10 @@ export default function Contact() {
 
         <FadeUp delay={0.15}>
           <p className="lede mt-7 max-w-[52ch] text-stone-600">
-            I take on full-stack web development and AI automation as separate
-            engagements — contract, freelance, or full-time. Tell me which one you
-            need and I will tell you exactly how I would build it.
+            Need a WordPress website, a WooCommerce storefront, or help improving
+            an existing site? I&rsquo;m open to freelance, contract, and full-time
+            Web Developer opportunities. I also take on AI automation as a
+            separate service.
           </p>
         </FadeUp>
 

@@ -18,14 +18,16 @@ const SITE = "https://gabrielpaolobaltazar.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "Gabriel Paolo Baltazar — Web Developer & AI Automation Specialist",
+    default: "Gabriel Paolo Baltazar — Web Developer & WordPress Developer",
     template: "%s · Gabriel Paolo Baltazar",
   },
   description:
-    "Full-stack web developer building production websites and web apps end to end — interface, API, database, tests, and deploy. Also takes on AI automation as a separate practice.",
+    "Web Developer building responsive websites with WordPress, Elementor, WooCommerce, HTML, CSS, and JavaScript. Experienced in content management and website quality assurance.",
   keywords: [
     "web developer",
-    "full-stack developer",
+    "WordPress developer",
+    "Elementor",
+    "WooCommerce",
     "AI automation specialist",
     "n8n",
     "Next.js",
@@ -39,15 +41,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE,
     siteName: "Gabriel Paolo Baltazar",
-    title: "Gabriel Paolo Baltazar — Web Developer & AI Automation Specialist",
+    title: "Gabriel Paolo Baltazar — Web Developer & WordPress Developer",
     description:
-      "Full-stack web developer. Production websites and web apps, built end to end.",
+      "Web Developer specializing in WordPress, responsive websites, WooCommerce storefronts, and website content management.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gabriel Paolo Baltazar — Web Developer & AI Automation Specialist",
+    title: "Gabriel Paolo Baltazar — Web Developer & WordPress Developer",
     description:
-      "Full-stack web developer. Production websites and web apps, built end to end.",
+      "Web Developer specializing in WordPress, responsive websites, WooCommerce storefronts, and website content management.",
   },
   robots: { index: true, follow: true },
 };

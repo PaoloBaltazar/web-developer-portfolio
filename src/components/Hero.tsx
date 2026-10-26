@@ -7,8 +7,8 @@ import TechMarquee from "./TechMarquee";
 import { ButtonLink, Eyebrow } from "./primitives";
 import { heroTicker, profile } from "@/lib/content";
 
-const LINE_ONE = "Websites that ship.";
-const LINE_TWO = "Built end to end.";
+const LINE_ONE = "Websites with care.";
+const LINE_TWO = "Built for people.";
 
 function Line({ text, delay }: { text: string; delay: number }) {
   return (
@@ -90,9 +90,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
           >
-            I&rsquo;m Gabriel Paolo, a full-stack web developer. I build production
-            websites and web apps end to end — interface, API, database, tests, and
-            the deploy that carries them.{" "}
+            I&rsquo;m Gabriel Paolo, a Web Developer. I build and customize responsive
+            websites with WordPress, Elementor, WooCommerce, and custom code —
+            with care for the design, the content, and every device.{" "}
             <span className="text-stone-650">
               I also take on AI automation as a separate, smaller practice.
             </span>

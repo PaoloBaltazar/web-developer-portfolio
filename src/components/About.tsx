@@ -54,15 +54,16 @@ export default function About() {
             </FadeUp>
             <TextReveal
               as="h2"
-              text="A _full-stack_ web developer."
+              text="A Web Developer with an eye for detail."
               className="display display-lg mt-7 max-w-[15ch] text-stone-100"
             />
             <FadeUp delay={0.15}>
               <p className="lede mt-7 max-w-[54ch] text-stone-600">
-                Computer Science graduate from Holy Angel University. Web
-                development is the work I do most and go deepest on — production
-                sites and web apps, owned from the interface down to the deploy.
-                AI automation is a separate, smaller practice I also take on.
+                I&rsquo;m a Computer Science graduate from Holy Angel University with
+                experience in website development, content management, and quality
+                assurance. I build WordPress sites, customize layouts, and keep
+                content accurate and consistent across devices. I also take on
+                AI automation as a separate practice.
               </p>
             </FadeUp>
           </div>
